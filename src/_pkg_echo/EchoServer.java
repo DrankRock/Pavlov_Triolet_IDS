@@ -40,6 +40,7 @@ public class EchoServer {
             System.err.println("Usage: java EchoServer <port number>");
             System.exit(1);
         }
+        System.out.println("Run Server !");
         
         int portNumber = Integer.parseInt(args[0]);
         
@@ -55,6 +56,7 @@ public class EchoServer {
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
                 out.println(inputLine);
+                System.out.println("Received : "+inputLine);
             }
             System.out.println("I'm ending...");
         } catch (IOException e) {
