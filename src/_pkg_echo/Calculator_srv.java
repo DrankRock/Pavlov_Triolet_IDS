@@ -9,7 +9,6 @@ import java.net.Socket;
 
 public class Calculator_srv implements Calculator_itf {
 	
-    private int iterator = 0;
     private int currentA = 0;
     private int currentB = 0;
     private String operand = "";
@@ -54,19 +53,26 @@ public class Calculator_srv implements Calculator_itf {
 	public void waitForClient(BufferedReader in, PrintWriter out) throws NumberFormatException, IOException {
         String inputLine;
         while ((inputLine = in.readLine()) != null) {
-        	// System.out.println("Received : '"+inputLine+"'");
+        	System.out.println("Received : '"+inputLine+"'");
         	try {
-	            switch(iterator%3) {
+        		String[] toS = inputLine.split("|");
+        		int iterator = Integer.valueOf(toS[0]);
+        		String inputLine_2 = "";
+        		for (int i = 2; i<toS.length;i++) {
+        			inputLine_2+=toS[i];
+        		}
+	            switch(iterator) {
 	            	case 0 : 
-	            		currentA = Integer.valueOf(inputLine);
+	            		currentA = Integer.valueOf(inputLine_2);
 	            		break;
 	            	case 1:
-	            		operand = inputLine;
+	            		operand = inputLine_2;
 	            		break;
 	            	case 2:
-	            		currentB = Integer.valueOf(inputLine);
+	            		currentB = Integer.valueOf(inputLine_2);
 	            		try {
 	            			int result = run_calculation(currentA, operand, currentB);
+	            			System.out.println("Result : "+result);
 	            			out.println(result);
 	            		} catch (Exception ex) {
 	            			System.out.println("Exception caught during calculation : \n"+ex+"\nClosing server ...");
@@ -75,7 +81,6 @@ public class Calculator_srv implements Calculator_itf {
 	            		}
 	            	break;
 	            }
-	            iterator ++;
         	} catch (Exception exp) {
         		System.out.println("Exception caught during arguments parsing : \n"+exp.getStackTrace()+"\nClosing server.");
         		out.println(EOT_s);

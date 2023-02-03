@@ -49,7 +49,7 @@ public class Calculator_client {
             	}
             	System.out.print(toPrint);
             	userInput = stdIn.readLine();
-                out.println(userInput);
+                out.println(""+iterator%3+"|"+userInput);
                 if (iterator%3 == 2) {
                 	String result = in.readLine();
                 	if (result != null) {
