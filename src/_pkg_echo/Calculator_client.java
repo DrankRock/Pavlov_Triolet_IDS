@@ -41,7 +41,7 @@ public class Calculator_client {
 	            		toPrint = "Int 1: ";
 	            		break;
 	            	case 1:
-	            		toPrint = "Operation: ";
+	            		toPrint = "Operation (+-/*) : ";
 	            		break;
 	            	default:
 	            		toPrint = "Int 2: ";
@@ -49,7 +49,6 @@ public class Calculator_client {
             	}
             	System.out.print(toPrint);
             	userInput = stdIn.readLine();
-                out.println(""+iterator%3+"|"+userInput);
                 if (iterator%3 == 2) {
                 	String result = in.readLine();
                 	if (result != null) {

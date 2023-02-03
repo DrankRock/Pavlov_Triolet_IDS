@@ -53,7 +53,6 @@ public class Calculator_srv implements Calculator_itf {
 	public void waitForClient(BufferedReader in, PrintWriter out) throws NumberFormatException, IOException {
         String inputLine;
         while ((inputLine = in.readLine()) != null) {
-        	System.out.println("Received : '"+inputLine+"'");
         	try {
         		String[] toS = inputLine.split("|");
         		int iterator = Integer.valueOf(toS[0]);
@@ -72,7 +71,6 @@ public class Calculator_srv implements Calculator_itf {
 	            		currentB = Integer.valueOf(inputLine_2);
 	            		try {
 	            			int result = run_calculation(currentA, operand, currentB);
-	            			System.out.println("Result : "+result);
 	            			out.println(result);
 	            		} catch (Exception ex) {
 	            			System.out.println("Exception caught during calculation : \n"+ex+"\nClosing server ...");
