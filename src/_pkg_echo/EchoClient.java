@@ -41,7 +41,7 @@ public class EchoClient {
                 "Usage: java EchoClient <host name> <port number>");
             System.exit(1);
         }
-
+        System.out.println("Run Client !");
         String hostName = args[0];
         int portNumber = Integer.parseInt(args[1]);
 
