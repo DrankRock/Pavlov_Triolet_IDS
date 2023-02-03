@@ -7,6 +7,7 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+
 public abstract class Server {
 	
 	public void actionLoop(BufferedReader in, PrintWriter out) throws NumberFormatException, IOException {

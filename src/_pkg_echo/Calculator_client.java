@@ -4,10 +4,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+/**
+ * The Class Calculator_client
+ */
 public class Calculator_client extends Client{
 	private char EOT = 0x04;
 	private String EOT_s = String.valueOf(EOT);
-
+	
+	
 	public void actionLoop(BufferedReader in, BufferedReader stdIn, PrintWriter out) throws IOException {
 		String userInput;
         int iterator = 0;
@@ -26,7 +30,7 @@ public class Calculator_client extends Client{
         	}
         	System.out.print(toPrint);
         	userInput = stdIn.readLine();
-        	out.println(""+iterator%3+"|"+userInput);
+        	out.println(userInput);
             if (iterator%3 == 2) {
             	String result = in.readLine();
             	if (result != null) {

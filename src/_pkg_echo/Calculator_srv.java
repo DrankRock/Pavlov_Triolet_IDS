@@ -11,6 +11,7 @@ public class Calculator_srv extends Server implements Calculator_itf {
     private String operand = "";
     private char EOT = 0x04;
     private String EOT_s = String.valueOf(EOT);
+    private int state; // 0:currentA, 1:operand, 2:currentB
     
 	@Override
 	public int plus(int a, int b) {
@@ -51,21 +52,15 @@ public class Calculator_srv extends Server implements Calculator_itf {
         String inputLine;
         while ((inputLine = in.readLine()) != null) {
         	try {
-        		String[] toS = inputLine.split("|");
-        		int iterator = Integer.valueOf(toS[0]);
-        		String inputLine_2 = "";
-        		for (int i = 2; i<toS.length;i++) {
-        			inputLine_2+=toS[i];
-        		}
-	            switch(iterator) {
+	            switch(state) {
 	            	case 0 : 
-	            		currentA = Integer.valueOf(inputLine_2);
+	            		currentA = Integer.valueOf(inputLine);
 	            		break;
 	            	case 1:
-	            		operand = inputLine_2;
+	            		operand = inputLine;
 	            		break;
 	            	case 2:
-	            		currentB = Integer.valueOf(inputLine_2);
+	            		currentB = Integer.valueOf(inputLine);
 	            		try {
 	            			int result = run_calculation(currentA, operand, currentB);
 	            			out.println(result);
@@ -76,6 +71,7 @@ public class Calculator_srv extends Server implements Calculator_itf {
 	            		}
 	            	break;
 	            }
+	            state = (state+1)%3;
         	} catch (Exception exp) {
         		System.out.println("Exception caught during arguments parsing : \n"+exp.getStackTrace()+"\nClosing server.");
         		out.println(EOT_s);
