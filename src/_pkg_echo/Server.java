@@ -9,9 +9,9 @@ import java.net.Socket;
 
 
 public abstract class Server {
+	public String EOT_s = String.valueOf(0x04);
 	
 	public void actionLoop(BufferedReader in, PrintWriter out) throws NumberFormatException, IOException {
-		System.out.println("Action loop is fucked");
 		//TODO loop waiting for the client
 	}
 	

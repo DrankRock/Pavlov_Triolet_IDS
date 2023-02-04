@@ -8,6 +8,8 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 public abstract class Client {
+	public String EOT_s = String.valueOf(0x04);
+	
 	public void actionLoop(BufferedReader in, BufferedReader stdIn, PrintWriter out) throws IOException {
 		// TODO Action loop
 		String userInput;
