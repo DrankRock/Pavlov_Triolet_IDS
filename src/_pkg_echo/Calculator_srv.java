@@ -9,8 +9,6 @@ public class Calculator_srv extends Server implements Calculator_itf {
     private int currentA = 0;
     private int currentB = 0;
     private String operand = "";
-    private char EOT = 0x04;
-    private String EOT_s = String.valueOf(EOT);
     private int state; // 0:currentA, 1:operand, 2:currentB
     
 	@Override
