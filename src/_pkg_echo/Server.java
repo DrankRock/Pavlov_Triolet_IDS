@@ -9,7 +9,7 @@ import java.net.Socket;
 
 
 public abstract class Server {
-	public String EOT_s = String.valueOf(0x04);
+	public String EOT_s = "-1";
 	
 	public void actionLoop(BufferedReader in, PrintWriter out) throws NumberFormatException, IOException {
 		//TODO loop waiting for the client
@@ -35,7 +35,7 @@ public abstract class Server {
                 new InputStreamReader(clientSocket.getInputStream()));
         ) {
         	this.actionLoop(in, out);
-            System.out.println("I'm ending...");
+          System.out.println("I'm ending...");
         } catch (IOException e) {
             System.out.println("Exception caught when trying to listen on port "
                 + portNumber + " or listening for a connection");

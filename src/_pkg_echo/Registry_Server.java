@@ -40,7 +40,7 @@ public class Registry_Server extends Server implements Registry_itf{
 	public Person search(String name) {
 		Iterable<Person> iterable = this.getAll();
 		for (Person p : iterable) {
-			if (p.getName() == name) {
+			if (p.getName().equals(name)) {
 				return p;
 			}
 		}
@@ -59,36 +59,42 @@ public class Registry_Server extends Server implements Registry_itf{
 	            switch(currentState) {
 	            	case WAITING : 
 	            		switch (Integer.valueOf(inputLine)) {
-		            		case 0 : 
+		            		case 4 : 
 		            			currentState = state.ADD;
+		            			break;
+		            		case 2 : 
+		            			currentState = state.SEARCH;
+		            			break;
+		            		case 3 : 
+		            			currentState = state.GETALL;
 		            			break;
 		            		case 1 : 
 		            			currentState = state.GET;
 		            			break;
-		            		case 2 : 
-		            			currentState = state.GETALL;
-		            			break;
-		            		case 3 : 
-		            			currentState = state.SEARCH;
-		            			break;
 		            		default:
 		            			break;
 	            		}
-	            		break;
-	            	case GET:
-	            		String phone = this.getPhone(inputLine);
-	            		out.println(phone);
-	            		this.currentState = state.WAITING;
-	            		break;
-	            	case SEARCH:
-	            		Person p = this.search(inputLine);
-	            		out.println(p.toString());
-	            		this.currentState = state.WAITING;
-	            		break;
+            		out.println(inputLine);
+            		break;
+            	case GET:
+            		String phone = this.getPhone(inputLine);
+            		out.println(phone);
+            		this.currentState = state.WAITING;
+            		break;
+            	case SEARCH:
+            		Person p = this.search(inputLine);
+            		if (p == null) {
+            			out.println("User not found");
+            		} else {
+            			out.println(p.toString());
+            		}
+            		this.currentState = state.WAITING;
+            		break;
 				case ADD:
 					Person p2 = Person.toPerson(inputLine);
 					registry.add(p2);
 					out.println("0"); // ACKNOWLEDGE
+					System.out.println("Registry of size "+registry.size());
 					this.currentState = state.WAITING;
 					break;
 				case GETALL:
@@ -96,6 +102,8 @@ public class Registry_Server extends Server implements Registry_itf{
 					for (Person person : registry) {
 						s += person.toString()+"|";
 					}
+					s = s.substring(0, s.length() - 1);
+					System.out.println("Get All is : "+s);
 					out.println(s);
 					this.currentState = state.WAITING;
 					break;

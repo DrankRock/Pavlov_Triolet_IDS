@@ -31,10 +31,14 @@ public class Person {
 	
 	public static Person toPerson(String s) {
 		Person p = new Person();
-		String[] infos = s.split(",");
-		p.name = infos[0];
-		p.age = Integer.valueOf(infos[1]);
-		p.phoneNumber = infos[2];
+		try {
+			String[] infos = s.split(",");
+			p.name = infos[0];
+			p.age = Integer.valueOf(infos[1]);
+			p.phoneNumber = infos[2];
+		} catch (Exception exp) {
+			return null;
+		}
 		return p;
 	}
 }

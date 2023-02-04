@@ -8,7 +8,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 public abstract class Client {
-	public String EOT_s = String.valueOf(0x04);
+	public String EOT_s = "-1";
 	
 	public void actionLoop(BufferedReader in, BufferedReader stdIn, PrintWriter out) throws IOException {
 		// TODO Action loop
@@ -18,6 +18,17 @@ public abstract class Client {
             System.out.println("echo: " + in.readLine());
         }
 	}
+	
+	public String process(String s) {
+		if (s != null) {
+        	if (s.equals(EOT_s)) {
+        		System.out.println("Server closed, closing connection ...");
+        		System.exit(1);
+        	}
+    	}
+		return s;
+	}
+	
 	public void startClient(String[] args) {
         if (args.length != 2) {
             System.err.println(
