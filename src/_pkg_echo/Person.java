@@ -23,4 +23,18 @@ public class Person {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+	
+	public String toString() {
+		String st = ""+name+","+age+","+phoneNumber;
+		return st;
+	}
+	
+	public static Person toPerson(String s) {
+		Person p = new Person();
+		String[] infos = s.split(",");
+		p.name = infos[0];
+		p.age = Integer.valueOf(infos[1]);
+		p.phoneNumber = infos[2];
+		return p;
+	}
 }
