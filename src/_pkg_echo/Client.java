@@ -9,6 +9,7 @@ import java.net.UnknownHostException;
 
 public abstract class Client {
 	public String EOT_s = "-1";
+	public BufferedReader in;
 	
 	public void actionLoop(BufferedReader in, BufferedReader stdIn, PrintWriter out) throws IOException {
 		// TODO Action loop
@@ -24,6 +25,14 @@ public abstract class Client {
         	if (s.equals(EOT_s)) {
         		System.out.println("Server closed, closing connection ...");
         		System.exit(1);
+        	} else if (s.startsWith("[b]")) {
+        		System.out.println(s);
+        		try {
+					return this.in.readLine();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
         	}
     	}
 		return s;
@@ -43,13 +52,12 @@ public abstract class Client {
             Socket echoSocket = new Socket(hostName, portNumber);
             PrintWriter out =
                 new PrintWriter(echoSocket.getOutputStream(), true);
-            BufferedReader in =
-                new BufferedReader(
-                    new InputStreamReader(echoSocket.getInputStream()));
+            BufferedReader in = new BufferedReader(new InputStreamReader(echoSocket.getInputStream()));
             BufferedReader stdIn =
                 new BufferedReader(
                     new InputStreamReader(System.in))
         ) {
+        	this.in = in;
             this.actionLoop(in, stdIn, out);
         } catch (UnknownHostException e) {
             System.err.println("Don't know about host " + hostName);
