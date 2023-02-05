@@ -50,7 +50,7 @@ public class Calculator_client extends Client{
 	
 	/**
 	 * Main method to start the client.
-	 **/
+	 */
 	public static void main(String[] args) {
         Calculator_client client = new Calculator_client();
         client.startClient(args);
