@@ -34,17 +34,19 @@ public class EchoThread extends Thread {
 				switch(inputLine) {
 					case "b" :
 						String message = in.readLine();
-						System.out.println("Client "+clientID+" trying to broadcast : "+message);
 						server.broadcast(message, clientID);
 						break;
 					case "l" :
-						out.println(this.getList());
+						out.println("List of active users : \n# "+this.getList());
 						break;
 					case "m":
+						int sendToID = Integer.valueOf(in.readLine());
+						server.sendMessage(clientID, sendToID, in.readLine());
 						break;
+					case "q":
+						System.out.println("[EXIT] "+clientID+" closed");
+						server.removefromList(clientID);
 				}
-				System.out.println("Client "+clientID+" says : "+inputLine);
-				//out.println(inputLine);
 			}
 		} catch (Exception e) {
 			System.out.println(

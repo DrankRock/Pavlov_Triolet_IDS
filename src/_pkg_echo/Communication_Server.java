@@ -17,11 +17,29 @@ public class Communication_Server {
 	}
 	
 	public void broadcast(String message, int clientID) throws IOException {
-		System.out.println("Called broadcast from server by "+clientID+" : "+message);
 		for (Map.Entry<Integer, Socket> entry : socketMap.entrySet()) {
 			PrintWriter out = new PrintWriter(entry.getValue().getOutputStream(), true);
-			out.println("|Message from ["+clientID+"] : "+message);
+			out.println("(Global) "+clientID+" : \""+message+"\"");
 		}
+	}
+	
+	public void sendMessage(int senderID, int destID, String message) {
+		try {
+			if(socketMap.containsKey(destID)){
+				PrintWriter out = new PrintWriter(socketMap.get(destID).getOutputStream(), true);
+				out.println("(Private) "+senderID+" : \""+message+"\"");
+			} else {
+				PrintWriter out = new PrintWriter(socketMap.get(senderID).getOutputStream(), true);
+				out.println("ERROR : ["+destID+"] couldn't be found");
+			}
+			
+		} catch (IOException e) {
+			System.out.println("Error found while sending message, can't find "+destID);
+		}
+	}
+	
+	public void removefromList(int id) {
+		socketMap.remove(id);
 	}
 	
 	public Socket getSocket(int id) {
