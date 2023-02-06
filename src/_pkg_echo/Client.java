@@ -7,10 +7,24 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+/**
+ * The Client abstract class generalizes the Client class
+ * @author matvei
+ *
+ */
 public abstract class Client {
 	public String EOT_s = "-1";
 	public BufferedReader in;
 	
+	/**
+	 * The action loop method that handles the communication
+	 * between the client and server.
+	 * 
+	 * @param in - BufferedReader to read input from the server
+	 * @param stdIn - BufferedReader to read input from the user
+	 * @param out - PrintWriter to send output to the server
+	 * @throws IOException - If an input/output error occurs
+	 */
 	public void actionLoop(BufferedReader in, BufferedReader stdIn, PrintWriter out) throws IOException {
 		// TODO Action loop
 		String userInput;
