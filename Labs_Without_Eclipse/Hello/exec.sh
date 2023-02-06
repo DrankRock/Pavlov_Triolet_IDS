@@ -2,7 +2,7 @@
 
 ### Automatically launch the server in a new terminal
 echo "remove *.class"
-rm ./*.class
+# rm ./*.class
 echo "compile *"
 javac *.java
 # Get the process ID of rmiregistry
@@ -24,7 +24,7 @@ echo "wait for server to start"
 sleep 1
 echo "test HelloClient"
 expect=$(java HelloClient.java localhost)
-if [ "$expect" == "Hello world !" ]; then
+if [ "$expect" == "Hello world ! int is : 42" ]; then
   echo "HelloClient works !"
 else :
   echo "Something went wrong, sorry :c"

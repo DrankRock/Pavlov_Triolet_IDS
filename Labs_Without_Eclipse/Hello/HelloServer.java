@@ -8,7 +8,7 @@ public class HelloServer {
   public static void  main(String [] args) {
 	  try {
 		  // Create a Hello remote object
-	    HelloImpl h = new HelloImpl ("Hello world !");
+	    HelloImpl h = new HelloImpl ("Hello world !", 42);
 	    Hello h_stub = (Hello) UnicastRemoteObject.exportObject(h, 0);
 
 	    // Register the remote object in RMI registry with a given identifier
