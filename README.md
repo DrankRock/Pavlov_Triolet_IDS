@@ -1,7 +1,10 @@
 # Pavlov_Triolet_IDS
 ## In this repo are our work for the IDS class in the S8 of M1 Computer Science at the UGA (of France, not Georgia)
 
-### First Lab : Sockets
+### LABS
+<details><summary>First Lab : Sockets</summary>
+<p>
+
 #### 6.1 : Calculator Server
 The protocol here is simply for the client to send <integer 1>, enter, <operand>, enter, <integer 2>, and the server will reply with the result.
 Here is a video showing this part working : 
@@ -38,4 +41,11 @@ Here is a video example of the execution of this Server/client with 3 clients an
 
 https://user-images.githubusercontent.com/32172257/216833914-bb0f3136-b450-4ae7-8f97-fdcf1a299d97.mp4
 
-### Second Lab : RMI
+ </p>
+</details>
+ 
+<details><summary>Second Lab : RMI</summary>
+ <p>
+ 
+ </p>
+</details>
