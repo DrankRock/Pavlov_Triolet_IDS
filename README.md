@@ -38,3 +38,4 @@ Here is a video example of the execution of this Server/client with 3 clients an
 
 https://user-images.githubusercontent.com/32172257/216833914-bb0f3136-b450-4ae7-8f97-fdcf1a299d97.mp4
 
+### Second Lab : RMI
