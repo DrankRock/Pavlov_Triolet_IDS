@@ -1,0 +1,15 @@
+Note about launching and making this !
+
+We did not make this in eclipse, because it's easier to launch rmi in terminal
+
+1) Open terminal
+$ javac *.java
+$ remiregistry &
+$ java HelloServer.java
+
+2) Open terminal
+$ java HelloClient.java
+
+...
+
+$ Profit ???
