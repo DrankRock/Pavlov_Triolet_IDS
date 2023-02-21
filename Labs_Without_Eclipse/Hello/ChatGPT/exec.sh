@@ -36,7 +36,5 @@ else
   echo "" > /dev/null
 fi # by ChatGPT lol
 echo "open new terminal"
-xdotool key "ctrl+shift+t"; xdotool type "rmiregistry &"; xdotool key Return; xdotool type "java ./HelloServer.java"; xdotool key Return; xdotool key "alt+shift+1";
+xdotool key "ctrl+shift+t"; xdotool type "rmiregistry &"; xdotool key Return; xdotool type "java ./ChatServerMain.java"; xdotool key Return; xdotool key "alt+shift+1";
 echo "server successfully running."
-echo "wait for server to start"
-sleep 1

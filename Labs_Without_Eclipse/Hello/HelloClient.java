@@ -5,7 +5,7 @@ import java.rmi.registry.*;
  * Class HelloClient, connects to the server and executes "sayHello", then returns 
  * 
  */
-public class HelloClient {
+public class HelloClient implements Client{
   public static void main(String [] args) {
 	
 	try {
@@ -23,8 +23,8 @@ public class HelloClient {
 
 	// Remote method invocation
 	String s = "caca";
-	String res = h.sayHello(s); // execute command 
-	int resTo = h.giveInt();
+	String res = h.sayHello(s, 0); // execute command 
+	int resTo = h.giveInt(); // this is a call to the server !
 	System.out.println(res+" int is : "+resTo);
 
 	} catch (Exception e)  {
