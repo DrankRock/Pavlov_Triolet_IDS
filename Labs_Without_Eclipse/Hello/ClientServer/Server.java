@@ -12,7 +12,6 @@ public interface Server extends Remote {
 	public int giveInt()  throws RemoteException;
     public int nextID()  throws RemoteException;
     public String getName() throws RemoteException;
-    public int connect(String user, String pass) throws RemoteException;
-    public void register(Client c) throws RemoteException;
+    public int connect(String user, String pass, ClientMessagesInterface cmi) throws RemoteException;
     public void disconnect(Info_itf_Impl infos) throws RemoteException;
 }  

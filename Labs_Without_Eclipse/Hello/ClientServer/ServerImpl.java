@@ -1,3 +1,5 @@
+// Importing the RMI package.
+import java.io.File;
 import java.rmi.*;
 import java.util.Random;
 import java.util.ArrayList;
@@ -11,8 +13,10 @@ public  class ServerImpl implements Server {
 	public ArrayList<String> names;
 	private HashMap<String, String> userToPass;
 	private HashMap<String, Integer> userToID;
-	private HashMap<String, Client> userToClientStub;
+	private HashMap<String, ClientMessagesInterface> userToClientStub;
 	public Random r = new Random();
+	FileLoader history;
+	FileLoader userData;
  
 	public ServerImpl(String s, int i) {
 		message = s ;
@@ -38,6 +42,8 @@ public  class ServerImpl implements Server {
 	userToPass = new HashMap<>();
 	userToID = new HashMap<>();
 	userToClientStub = new HashMap<>();
+	history = new FileLoader(".history");
+	userData = new FileLoader(".userdata");
 	}
 
 	public String sayHello(String s, int id) throws RemoteException {
@@ -62,17 +68,17 @@ public  class ServerImpl implements Server {
 	}
 
 	// returns the id of the user
-	public int connect(String user, String pass) throws RemoteException{
+	public int connect(String user, String pass, ClientMessagesInterface cmi) throws RemoteException{
+		int ret = -1;
 		System.out.println("[CONNECT] - "+user+" : "+pass);
 		if (userToPass.containsKey(user)){
 			System.out.println("[CONNECT] - user exists");
 			System.out.println("[CONNECT] - userToPass(user) = "+userToPass.get(user));
 			if (userToPass.get(user).equals(pass)){
 				System.out.println("[CONNECT] - "+user+" successfully connected.");
-				return userToID.get(user);
+				ret = userToID.get(user);
 			} else {
 				System.out.println("[CONNECT] - incorrect password");
-				return -1; //incorrect password
 			}
 		} else {
 			System.out.println("[CONNECT] - create user");
@@ -80,33 +86,30 @@ public  class ServerImpl implements Server {
 			userToPass.put(user, pass);
 			int id = this.nextID();
 			userToID.put(user, id);
-			return id; //return id
+			ret = id; //return id
 		}
+		if (ret != -1 ){
+			userToClientStub.put(user, cmi);
+		}
+		return ret;
 	}
 
 	public void message(String s) throws RemoteException{
 		// broadcast message
 		Tools.dprint("Message sent : "+s);
 
-		for (Client client : userToClientStub.values()) {
-			client.recieveMessage(s);
+		for (ClientMessagesInterface client : userToClientStub.values()) {
+			client.displayMessage(s);
 			// ...
 		}
 		
 
 	}
 
-	public void register(Client c) throws RemoteException {
-		Client c2 = (Client) c;
-		Tools.dprint("user trying to register");
-		Tools.dprint(c2.toString());
-		Tools.dprint("Adding "+c2.getInfos().name+" to active users");
-		userToClientStub.put(c.getInfos().getName(), c);
-	}
-
 	public void disconnect(Info_itf_Impl infos) throws RemoteException{
 		Tools.dprint("Removing "+infos.name+" from active users");
 		userToClientStub.remove(infos.getName());
 	}
+
 }
 

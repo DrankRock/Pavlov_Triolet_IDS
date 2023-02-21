@@ -1,20 +1,25 @@
 import java.rmi.*;
 import java.rmi.registry.*;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.Scanner;
 
 /**
  * Class HelloClient, connects to the server and executes "sayHello", then returns 
  * 
  */
-public class ClientImpl extends UnicastRemoteObject implements Client{
+public class ClientImpl {
 	private Server h;
 	private int myID;
 	Info_itf_Impl infos;
+	Thread listener;
+	ClientMessages messaging;
 
 	public ClientImpl(String user, String pass, String host, Server h) throws RemoteException, NotBoundException{
 		this.h = h;
 		Tools.dprint("Initializing user : "+user);
-		myID = this.h.connect(user, pass);
+		this.messaging = new ClientMessages();
+		ClientMessagesInterface messaging_stub = (ClientMessagesInterface) UnicastRemoteObject.exportObject(messaging, 0);	
+		myID = this.h.connect(user, pass, messaging_stub);
 		if (myID == -1){
 			System.out.println("Incorrect Password .. ");
 			System.exit(0);
@@ -30,23 +35,10 @@ public class ClientImpl extends UnicastRemoteObject implements Client{
 		h.message(s);
 	}
 
-	@Override
-	public void RegisterToServer(Client c) throws RemoteException {
-		System.out.println("Register reached");
-		h.register(c);
-	}
-
-	@Override
-	public Info_itf_Impl getInfos() throws RemoteException {
-		return this.infos;
-	}
-
-	@Override
-	public void recieveMessage(String s) throws RemoteException {
+	public void recieveMessage(String s) {
 		System.out.println("[MSG] : "+s);
 	}
 
-	@Override
 	public void disconnect() throws RemoteException {
 		h.disconnect(infos);
 	}
@@ -54,32 +46,54 @@ public class ClientImpl extends UnicastRemoteObject implements Client{
 	public String toString(){
 		return infos.toString()+", "+myID;
 	}
-
-	/*public void run(String [] args){
-		try {
-
-		String host = args[0];
-		String name = args[1];
-		String pass = args[2];
-
-		
-
-		this.connect(name, pass);
-		this.infos = new Info_itf_Impl(name, myID);
-
-		String myName = h.getName();
-
+	public void quit() throws RemoteException{
+		this.disconnect();
+		//this.listener.interrupt();
 		System.exit(0);
-
-		} catch (Exception e)  {
-			System.err.println("Error on client: " + e);
-		}
-	} 
-  public static void main(String [] args) {
-  		if (args.length != 3) {
-				System.out.println("Usage: java HelloClient <rmiregistry host ex: localhost> <username> <password>");
-				return;
+	}
+	public void launchListener(){
+		/*
+		listener = new Thread(){
+			public void run(){
+				while(!Thread.interrupted()){
+					
+				}
 			}
-  	//ClientImpl hc = new ClientImpl();
-  	//hc.run(args);*/
+		  };
+		
+		  listener.start();*/
+	}
+
+	public void run() throws RemoteException{
+		Scanner scanner = new Scanner(System.in);
+		String s;
+		while (scanner.hasNextLine()){
+			s = scanner.nextLine();
+			if (s.equals("quit")){
+				scanner.close();
+				this.quit();
+			} else {
+				sendMessage(s);
+			}
+		}
+		scanner.close();
+	}
+
+	public static void main(String [] args) throws RemoteException, NotBoundException {
+		if (args.length != 3) {
+			System.out.println("Usage: java HelloClient <rmiregistry host ex: localhost> <username> <password>");
+			return;
+		}
+		// Get remote object reference
+		Registry registry = LocateRegistry.getRegistry(args[0]); // get the registry of the host given in argument
+		// Here, we will always use "localhost"
+		Server h = (Server) registry.lookup("HelloService"); //get the server running on the RMI
+		ClientImpl hc = new ClientImpl(args[1], args[2], args[0], h);
+
+		//ClientImpl cc = (ClientImpl) UnicastRemoteObject.exportObject(hc, 0);	
+
+		hc.run();
+		System.exit(1);
+		//hc.run(args);
+	}
 }
