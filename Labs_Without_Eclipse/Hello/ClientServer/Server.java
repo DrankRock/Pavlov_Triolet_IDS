@@ -6,12 +6,8 @@ import java.rmi.*;
  * 
  */
 public interface Server extends Remote {
-	public String sayHello(String s, int id)  throws RemoteException;
-    public String sayHello(String s, Info_itf client)  throws RemoteException;
     public void message(String user, String s) throws RemoteException;
-	public int giveInt()  throws RemoteException;
     public int nextID()  throws RemoteException;
-    public String getName() throws RemoteException;
     public int connect(String user, String pass, ClientMessagesInterface cmi) throws RemoteException;
     public void disconnect(Info_itf_Impl infos) throws RemoteException;
 }  
