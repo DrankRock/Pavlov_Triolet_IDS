@@ -89,7 +89,7 @@ public class ClientImpl {
 		// Get remote object reference
 		Registry registry = LocateRegistry.getRegistry(args[0]); // get the registry of the host given in argument
 		// Here, we will always use "localhost"
-		Server h = (Server) registry.lookup("HelloService"); //get the server running on the RMI
+		Server h = (Server) registry.lookup("RunningServerPT1"); //get the server running on the RMI
 		ClientImpl hc = new ClientImpl(args[1], args[2], args[0], h);
 
 		//ClientImpl cc = (ClientImpl) UnicastRemoteObject.exportObject(hc, 0);	
