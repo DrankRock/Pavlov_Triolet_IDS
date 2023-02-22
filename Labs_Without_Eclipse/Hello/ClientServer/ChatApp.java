@@ -17,7 +17,7 @@ public class ChatApp extends JFrame implements ActionListener {
     public ChatApp(String user) throws RemoteException, NotBoundException {
         this.user = user;
         Registry registry = LocateRegistry.getRegistry("localhost"); // get the registry of the host given in argument
-		this.communicationWithServer = (Server) registry.lookup("HelloService");
+		this.communicationWithServer = (Server) registry.lookup("RunningServerPT1");
         setTitle("Chat v0.1 - "+user);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
