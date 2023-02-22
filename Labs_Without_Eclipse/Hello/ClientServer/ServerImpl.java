@@ -1,88 +1,71 @@
 // Importing the RMI package.
 import java.io.File;
 import java.rmi.*;
+import java.security.SecureRandom;
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * NOTE :  ID is actually useless I think, because everything is done through a unique username
+ * I make it work, and then i'll delete if necessary
+ */
 public  class ServerImpl implements Server {
 
 	private String message;
 	private int lastGivenID;
-	public ArrayList<String> names;
 	private HashMap<String, String> userToPass;
 	private HashMap<String, Integer> userToID;
 	private HashMap<String, ClientMessagesInterface> userToClientStub;
-	public Random r = new Random();
+	public SecureRandom r = new SecureRandom();
 	FileLoader history;
 	FileLoader userData;
  
 	public ServerImpl(String s, int i) {
 		message = s ;
 		lastGivenID = 0;
-		names = new ArrayList<String>() {{
-		add("Wade");
-		add("Dave");
-		add("Seth");
-		add("Ivan");
-		add("Riley");
-		add("Gilbert");
-		add("Jorge");
-		add("Dan");
-		add("Olivia");
-		add("Emma");
-		add("Charlotte");
-		add("Amelia");
-		add("Ava");
-		add("Sophia");
-		add("Isabella");
-		add("Mia");
-	}};
-	userToPass = new HashMap<>();
-	userToID = new HashMap<>();
-	userToClientStub = new HashMap<>();
-	history = new FileLoader(".history");
-	userData = new FileLoader(".userdata");
+		userToPass = new HashMap<>();
+		userToID = new HashMap<>();
+		userToClientStub = new HashMap<>();
+		history = new FileLoader(".history");
+		userData = new FileLoader(".userdata");
+		try {
+			loadUsers();
+			loadHistory();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
-	public String sayHello(String s, int id) throws RemoteException {
-		//System.out.println("Connection initiated by "+id); // Solution 1	
-
-		return message+", Client said "+s;
-	}
-	public String sayHello(String s, Info_itf inf) throws RemoteException {
-		System.out.println("Connection initiated by "+inf.getID()); // Solution 2
-		
-		return "Hello from the server, "+inf.getName();
-	}
-
-	public int giveInt() throws RemoteException {
-		return 0;
-	}
 	public int nextID() throws RemoteException {
 		return lastGivenID++;
-	}
-	public String getName() throws RemoteException {
-		return this.names.get(r.nextInt(names.size() - 1));
 	}
 
 	// returns the id of the user
 	public int connect(String user, String pass, ClientMessagesInterface cmi) throws RemoteException{
 		int ret = -1;
-		System.out.println("[CONNECT] - "+user+" : "+pass);
+		Tools.dprint("[CONNECT] - "+user+" : "+pass);
+
 		if (userToPass.containsKey(user)){
-			System.out.println("[CONNECT] - user exists");
-			System.out.println("[CONNECT] - userToPass(user) = "+userToPass.get(user));
-			if (userToPass.get(user).equals(pass)){
-				System.out.println("[CONNECT] - "+user+" successfully connected.");
+			Tools.dprint("[CONNECT] - user exists");
+			Tools.dprint("[CONNECT] - userToPass(user) = "+userToPass.get(user));
+		
+			if (arePasswordsEqual(userToPass.get(user), pass)){
+				Tools.dprint("[CONNECT] - "+user+" successfully connected.");
 				ret = userToID.get(user);
+				cmi.displayMessage("Welcome back, "+user+".");
 			} else {
-				System.out.println("[CONNECT] - incorrect password");
+				Tools.dprint("[CONNECT] - incorrect password");
 			}
 		} else {
-			System.out.println("[CONNECT] - create user");
+			Tools.dprint("[CONNECT] - create user");
 			// create user
-			userToPass.put(user, pass);
+			String salt = Security.bytesToHex(Security.getSalt());
+			String hashedPwd = Security.encode(pass, salt);
+
+			userToPass.put(user, salt+":"+hashedPwd);
+			userData.addLine(""+user+":"+salt+":"+hashedPwd); // add user to file
 			int id = this.nextID();
 			userToID.put(user, id);
 			ret = id; //return id
@@ -91,6 +74,12 @@ public  class ServerImpl implements Server {
 			userToClientStub.put(user, cmi);
 		}
 		return ret;
+	}
+
+	public boolean arePasswordsEqual(String saltAndPass, String passwd){
+		String[] spl = saltAndPass.split(":");
+		String hashed = Security.encode(passwd, spl[0]);
+		return spl[1].equals(hashed);
 	}
 
 	public void message(String user, String s) throws RemoteException{
@@ -108,6 +97,24 @@ public  class ServerImpl implements Server {
 	public void disconnect(Info_itf_Impl infos) throws RemoteException{
 		Tools.dprint("Removing "+infos.name+" from active users");
 		userToClientStub.remove(infos.getName());
+	}
+
+	private void loadUsers() throws RemoteException{
+		ArrayList<String> lines = userData.readLines();
+		for (String line : lines){
+			try {
+				UserData current = Security.stringToUserdata(line);
+				userToPass.put(current.getUser(), current.getSalt()+":"+current.getPassword());
+				userToID.put(current.getUser(), this.nextID());
+			} catch (NullPointerException npe){
+				Tools.dprint("line :'"+line+"'\nContains no user:salt:password");
+			}
+		}
+	}
+
+	private void loadHistory(){
+		ArrayList<String> lines = history.readLines();
+
 	}
 
 }
