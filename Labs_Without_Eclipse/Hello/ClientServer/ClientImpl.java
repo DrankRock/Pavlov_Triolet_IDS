@@ -15,9 +15,9 @@ public class ClientImpl {
 	ClientMessages messaging;
 
 	public ClientImpl(String user, String pass, String host, Server h) throws RemoteException, NotBoundException{
+		Tools.dprint("Create clientimpl");
 		this.h = h;
-		Tools.dprint("Initializing user : "+user);
-		this.messaging = new ClientMessages();
+		this.messaging = new ClientMessages(user);
 		ClientMessagesInterface messaging_stub = (ClientMessagesInterface) UnicastRemoteObject.exportObject(messaging, 0);	
 		myID = this.h.connect(user, pass, messaging_stub);
 		if (myID == -1){
@@ -27,12 +27,14 @@ public class ClientImpl {
 		Tools.dprint("Connected. Given id : "+myID);
 		this.infos = new Info_itf_Impl(user, myID);
 		Tools.dprint("Given infos : "+this.infos);
+		
+		//messaging.displayMessage("Initializing user : "+user);
 	}
 
 	public void sendMessage(String s) throws RemoteException{
 		// send message to server
 		Tools.dprint("[INFO] - "+infos.name+" sending \""+s+"\"");
-		h.message(s);
+		h.message(infos.getName(), s);
 	}
 
 	public void recieveMessage(String s) {

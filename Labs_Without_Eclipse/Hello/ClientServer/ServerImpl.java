@@ -4,7 +4,6 @@ import java.rmi.*;
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.HashMap;
-import com.clientserver.*;
 
 public  class ServerImpl implements Server {
 
@@ -94,12 +93,12 @@ public  class ServerImpl implements Server {
 		return ret;
 	}
 
-	public void message(String s) throws RemoteException{
+	public void message(String user, String s) throws RemoteException{
 		// broadcast message
 		Tools.dprint("Message sent : "+s);
 
 		for (ClientMessagesInterface client : userToClientStub.values()) {
-			client.displayMessage(s);
+			client.displayMessage(user, s);
 			// ...
 		}
 		
