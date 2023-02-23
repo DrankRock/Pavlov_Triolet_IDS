@@ -1,5 +1,3 @@
-import java.security.NoSuchAlgorithmException;
-
 public class SecurityTest {
     public static void main(String[] args){
         byte[] salt = Security.getSalt();
