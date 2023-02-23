@@ -1,7 +1,6 @@
 
 import java.io.Serializable;
 import java.rmi.*;
-import java.rmi.server.UnicastRemoteObject;
 
 public class Info_itf_Impl implements Info_itf, Serializable{
 	public String name;
