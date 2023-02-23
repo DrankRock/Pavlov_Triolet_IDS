@@ -6,6 +6,7 @@ public class ClientMessages implements ClientMessagesInterface {
     public ClientMessages(String name) throws RemoteException, NotBoundException{
         //this.userInfos = infos;
         gui = new ChatApp(name);
+        gui.askForConnection();
         gui.run();
     }
 
