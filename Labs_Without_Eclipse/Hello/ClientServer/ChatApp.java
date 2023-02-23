@@ -74,4 +74,17 @@ public class ChatApp extends JFrame implements ActionListener {
     public void run() throws RemoteException{
         this.setVisible(true);
     }
+
+    public void askForConnection(){
+        ConnexionClient cc = new ConnexionClient(this);
+        System.out.println("test");
+    }
+
+    public void connect(String user, String pass){
+        //
+    }
+
+    public String toString(){
+        return "ChatApp v0.1";
+    }
 }
