@@ -4,7 +4,11 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
 /**
+ * Security class to hash strings in salted sha-256, for safer password storage
+ * Uses SecureRandom instead of Random.
  * The aim is to manipulate only strings, and make them byte[] only for the encoding
+ * 
+ * The general informations on how this works come from this article : https://www.baeldung.com/sha-256-hashing-java
  */
 public final class Security {
     /**
@@ -83,7 +87,7 @@ public final class Security {
     }
 
     /**
-     * Convert a String containinh hexadecimal representation of bytes into a byte array
+     * Convert a String containing hexadecimal representation of bytes into a byte array
      * @param hash the hexadecimal representation
      * @return the corresponding byte array
      */
@@ -104,6 +108,7 @@ public final class Security {
     }
     /**
      * Get a random salt in a byte array
+     * @return a byte array containing random values
      */
     public static byte[] getSalt(){
         SecureRandom random = new SecureRandom(); // less predictable than Random
