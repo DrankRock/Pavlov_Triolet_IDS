@@ -25,6 +25,13 @@ if [ "$1" == "clear" ]; then
   exit 1
 fi
 
+# client mode
+if [ "$1" == "client" ]; then
+  javac *.java
+  java ClientImpl.java localhost
+  exit 1
+fi
+
 ### Automatically launch the server in a new terminal
 echo "remove *.class"
 # rm ./*.class
