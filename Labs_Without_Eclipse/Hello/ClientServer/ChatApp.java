@@ -152,6 +152,14 @@ public class ChatApp extends JFrame implements ActionListener {
     }
 
     /**
+     * Add message with no user (server messages), but in valid form, so green
+     * @param s
+     */
+    public synchronized void addMessageValid(String s){
+        chatArea.validMessage(s);
+    }
+
+    /**
      * Add message as an array of string (for loading history))
      * @param s
      */
