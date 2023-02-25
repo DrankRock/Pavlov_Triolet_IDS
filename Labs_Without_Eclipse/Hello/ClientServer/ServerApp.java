@@ -14,23 +14,21 @@ public class ServerApp extends JFrame{
      */
     public ServerApp() {
         int width = 1000, height = 800;
-
         setTitle("Server logs - v0.1 ");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Dimension thisDimension = new Dimension(width, height);
         this.setSize(thisDimension);
         this.setPreferredSize(thisDimension);
         this.setMinimumSize(thisDimension);
-
         chatArea = new ColoredTextPane(new Dimension(width-100, height-100));
         chatArea.switchNightMode();
         JScrollPane chatScrollPane = new JScrollPane(chatArea);
 
         Container contentPane = getContentPane();
         contentPane.add(chatScrollPane, BorderLayout.CENTER);
-
         pack();
         setLocationRelativeTo(null);
+        this.setVisible(true);
     }
 
     /**
@@ -50,13 +48,6 @@ public class ServerApp extends JFrame{
         chatArea.normalMessage(s, size);
     }
 
-    /**
-     * run function
-     */
-    public void run() {
-        this.setVisible(true);
-        this.AsciiStart();
-    }
 
     /**
      * print a cool ascii art of the server (＾▽＾)
