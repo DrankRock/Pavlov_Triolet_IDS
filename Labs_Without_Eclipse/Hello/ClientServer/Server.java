@@ -12,5 +12,5 @@ public interface Server extends Remote {
     public void loadUsers(String s) throws RemoteException;
     public void loadHistory(String s) throws RemoteException;
     public void notifyOfActiveGUI(Info_itf_Impl inf) throws RemoteException;
-    public void startLogs() throws RemoteException;
+    public void startLogs(String identifier) throws RemoteException;
 }  
