@@ -1,8 +1,7 @@
 import java.rmi.*;
 
 /**
- * RMI Interface "Hello"
- * @version 0.1
+ * Server interface
  * 
  */
 public interface Server extends Remote {
