@@ -55,7 +55,7 @@ public  class ServerImpl implements Server {
 		bufferHistory = new ArrayList<>();
 		bufferLog = new ArrayList<>();
 		userData = new FileLoader(".userdata");
-		logFile = new FileLoader(".logile");
+		logFile = new FileLoader(".logfile");
 	}
 
 	/**
@@ -65,7 +65,6 @@ public  class ServerImpl implements Server {
 	public void startGUI(String s) throws RemoteException, NotBoundException{
 		if (s.equals(callerServerIDHash)){
 			gui = new ServerApp();
-			gui.run();
 			// On server gui close, backup history, logs and exit all the clients.
 			gui.addWindowListener(new WindowAdapter() {
 				@Override
@@ -266,6 +265,7 @@ public  class ServerImpl implements Server {
 	 */
 	public void startLogs(String identifier)  throws RemoteException{
 		if(identifier.equals(callerServerIDHash)){
+			gui.AsciiStart();
 			log("#### ~New Server Start : "+dtf.format(LocalDateTime.now())+"####");
 
 			executorServiceLogs = Executors.newSingleThreadScheduledExecutor();
