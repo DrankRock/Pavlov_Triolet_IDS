@@ -18,6 +18,13 @@ if [ "$1" == "make" ]; then
   exit 1
 fi
 
+# clear mode
+if [ "$1" == "clear" ]; then
+  echo "remove *.class"
+  rm ./*.class
+  exit 1
+fi
+
 ### Automatically launch the server in a new terminal
 echo "remove *.class"
 # rm ./*.class
