@@ -20,7 +20,7 @@ public class HelloServer {
 	    Registry registry= LocateRegistry.getRegistry(); 
 	    registry.bind("RunningServerPT1", h_stub);
 		h_stub.startGUI(sessionServerHash); // launch server gui
-		h_stub.startLogs(); // launch logs backup to logfile
+		h_stub.startLogs(sessionServerHash); // launch logs backup to logfile
 		h_stub.loadUsers(sessionServerHash); // launch user/pass loading 
 		h_stub.loadHistory(sessionServerHash); // launch history loading + history backup
 		
