@@ -1,3 +1,6 @@
+/**
+ * UserData class to manipulate easily user - salt - password
+ */
 public class UserData {
     private String user;
     private String salt;
