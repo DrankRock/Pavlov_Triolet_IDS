@@ -1,9 +1,16 @@
+import java.nio.charset.Charset;
 import java.rmi.*;
 import java.security.SecureRandom;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 /**
  * NOTE :  ID is actually useless I think, because everything is done through a unique username
@@ -11,56 +18,90 @@ import java.util.HashMap;
  */
 public  class ServerImpl implements Server {
 
-	private int lastGivenID;
 	private HashMap<String, String> userToPass;
-	private HashMap<String, Integer> userToID;
+	private HashMap<String, String> userToID;
 	private HashMap<String, ClientMessagesInterface> userToClientStub;
 	private ArrayList<String> chatHistory;
+	private ArrayList<String> bufferHistory;
+	private ArrayList<String> bufferLog;
+	private ArrayList<String> activeUsers;
 	public SecureRandom r = new SecureRandom();
 	FileLoader history;
 	FileLoader userData;
+	FileLoader logFile;
 
 	ServerApp gui;
 
-	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss:SSS:AAAA");
+	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy-HH:mm:ss:SSS:AAAA");
 
 	private String callerServerIDHash;
+
+	ScheduledExecutorService executorServiceHistory;
+	ScheduledExecutorService executorServiceLogs;
  
 	public ServerImpl(String s, int i){
 		callerServerIDHash = s ;
-		lastGivenID = 0;
 		userToPass = new HashMap<>();
 		userToID = new HashMap<>();
 		userToClientStub = new HashMap<>();
+		activeUsers = new ArrayList<>();
 		history = new FileLoader(".history");
+		bufferHistory = new ArrayList<>();
+		bufferLog = new ArrayList<>();
 		userData = new FileLoader(".userdata");
-		
+		logFile = new FileLoader(".logile");
 	}
 
 	public void startGUI(String s) throws RemoteException, NotBoundException{
 		if (s.equals(callerServerIDHash)){
 			gui = new ServerApp();
 			gui.run();
+			gui.addWindowListener(new WindowAdapter() {
+				@Override
+				public void windowClosing(WindowEvent e) {
+					try {
+						System.out.println("Exit all users gui");
+						exitAll();
+					} catch (RemoteException e1) {
+						e1.printStackTrace();
+					}
+				}
+			});
 		}
 	}
 
-	public int nextID() throws RemoteException {
-		return lastGivenID++;
+	private synchronized void backupHistory(){
+		ArrayList<String> histo = new ArrayList<>(bufferHistory);
+		bufferHistory.clear();
+		for (String line : histo){
+			history.addLine(line);
+		}
+		log("[INFO] - BACK UP HISTORY DONE, "+histo.size()+" entries added.");
 	}
 
-	// returns the id of the user
-	public int connect(String user, String pass, ClientMessagesInterface cmi) throws RemoteException{
-		int ret = -1;
-		log("[CONNECT] ("+user+") - "+user+" : "+pass);
+	private synchronized void backupLog(){
+		ArrayList<String> logs = new ArrayList<>(bufferLog);
+		bufferLog.clear();
+		for (String line : logs){
+			logFile.addLine(line);
+		}
+		log("[INFO] - BACK UP LOGFILE DONE, "+logs.size()+" entries added.");
+	}
+
+
+	public String connect(String user, String pass, ClientMessagesInterface cmi) throws RemoteException{
+		String ret = null;
+		log("[CONNECT] ("+user+") - "+user);
 
 		if (userToPass.containsKey(user)){
 			log("[CONNECT] ("+user+") - user exists");
-			log("[CONNECT] ("+user+") - userToPass(user) = "+userToPass.get(user));
 		
 			if (arePasswordsEqual(userToPass.get(user), pass)){
 				log("[CONNECT] ("+user+") - "+user+" successfully connected.");
-				ret = userToID.get(user);
-				cmi.displayMessage("Welcome back, "+user+".");
+				byte[] array = new byte[7];
+				new SecureRandom().nextBytes(array);
+				ret = new String(array, Charset.forName("UTF-8"));
+				//cmi.displayMessage("Welcome back, "+user+".");
 			} else {
 				log("[CONNECT] ("+user+") - incorrect password");
 			}
@@ -72,19 +113,29 @@ public  class ServerImpl implements Server {
 
 			userToPass.put(user, salt+":"+hashedPwd);
 			userData.addLine(""+user+":"+salt+":"+hashedPwd); // add user to file
-			int id = this.nextID();
-			userToID.put(user, id);
-			ret = id; //return id
+
+			byte[] array = new byte[7]; // length is bounded by 7
+			new SecureRandom().nextBytes(array);
+			ret = new String(array, Charset.forName("UTF-8"));
 		}
-		if (ret != -1 ){
+		if (ret != null){
+			userToID.put(user, ret);
 			userToClientStub.put(user, cmi);
-			giveHistoryToUser(cmi);
 		}
 		return ret;
 	}
 
-	private void giveHistoryToUser(ClientMessagesInterface cmi){
+	public void notifyOfActiveGUI(Info_itf_Impl inf) throws RemoteException{
+		if (inf.getID().equals(userToID.get(inf.getName()))){
+			// if id corresponds to the one given to the user
+			activeUsers.add(inf.getName());
+			giveHistoryToUser(inf.getName());
+		}
+	}
 
+	private void giveHistoryToUser(String user) throws RemoteException{
+
+		userToClientStub.get(user).displayMessage(this.chatHistory);
 	}
 
 	public boolean arePasswordsEqual(String saltAndPass, String passwd){
@@ -93,22 +144,26 @@ public  class ServerImpl implements Server {
 		return spl[1].equals(hashed);
 	}
 
-	public void message(String user, String s) throws RemoteException{
+	public void message(Info_itf_Impl infos, String s) throws RemoteException{
 		// broadcast message
-		log("[INFO] - Message recieved from <"+user+">");
-
-		for (ClientMessagesInterface client : userToClientStub.values()) {
-			client.displayMessage(user, s);
-		}
 		
-
+		log("[INFO] - Message received from <"+infos.getName()+">\n    Added to history !");
+		chatHistory.add(infos.getName()+": "+s);
+		bufferHistory.add(infos.getName()+": "+s);
+		for (ClientMessagesInterface client : userToClientStub.values()) {
+			client.displayMessage(infos.getName(), s);
+		}
 	}
 
 	public void disconnect(Info_itf_Impl infos) throws RemoteException{
-		log("[DISCONNECT] - Removing "+infos.name+" from active users");
+		log("[DISCONNECT] - Removing "+infos.getName()+" from active users");
 		userToClientStub.remove(infos.getName());
+		activeUsers.remove(infos.getName());
 	}
 
+	/*
+	 *  LOADERS have to be public for HelloServer to call them !
+	 */
 	public void loadUsers(String s) throws RemoteException{
 		if (s.equals(callerServerIDHash)){
 			ArrayList<String> lines = userData.readLines();
@@ -117,7 +172,6 @@ public  class ServerImpl implements Server {
 				try {
 					UserData current = Security.stringToUserdata(line);
 					userToPass.put(current.getUser(), current.getSalt()+":"+current.getPassword());
-					userToID.put(current.getUser(), this.nextID());
 					log("[SETUP] | - Loaded : "+current.getUser());
 				} catch (NullPointerException npe){
 					log("[SETUP] | - line :'"+line+"' Contains no user:salt:password");
@@ -131,12 +185,41 @@ public  class ServerImpl implements Server {
 			chatHistory = history.readLines();
 			log("[SETUP] - HISTORY LOADED ("+chatHistory.size()+" lines)");
 		}
+		executorServiceHistory = Executors.newSingleThreadScheduledExecutor();
+
+        executorServiceHistory.scheduleAtFixedRate(() -> {
+			if (bufferHistory.size() > 0 ){
+				backupHistory();
+			}
+        }, 0, 2, TimeUnit.MINUTES);
+
+	}
+
+	public void startLogs()  throws RemoteException{
+		log("#### ~New Server Start : "+dtf.format(LocalDateTime.now())+"####");
+
+		executorServiceLogs = Executors.newSingleThreadScheduledExecutor();
+
+        executorServiceLogs.scheduleAtFixedRate(() -> {
+			if (bufferLog.size() > 0 ){
+				backupLog();
+			}
+        }, 0, 30, TimeUnit.SECONDS);
 
 	}
 
 	private void log(String s){
-		gui.log("("+dtf.format(LocalTime.now())+") "+s);
+		String ss = "("+dtf.format(LocalDateTime.now())+") "+s;
+		gui.log(ss);
+		bufferLog.add(ss);
 	}
+
+	public void exitAll() throws RemoteException{
+		for (ClientMessagesInterface client : userToClientStub.values()) {
+			client.closingServer();
+		}
+	}
+
 
 }
 

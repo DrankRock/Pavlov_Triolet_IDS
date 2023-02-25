@@ -15,8 +15,10 @@ public class HelloServer {
 	    Registry registry= LocateRegistry.getRegistry(); 
 	    registry.bind("RunningServerPT1", h_stub);
 		h_stub.startGUI(sessionServerHash); // launch server gui
+		h_stub.startLogs();
 		h_stub.loadUsers(sessionServerHash);
 		h_stub.loadHistory(sessionServerHash);
+		
 	    System.out.println ("Server ready");
 
 	  } catch (Exception e) {

@@ -33,7 +33,7 @@ public class FileLoader {
 
     }
 
-    public void addLine(String line) {
+    public synchronized void addLine(String line) {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));
             writer.write(line);
@@ -44,7 +44,7 @@ public class FileLoader {
         }
     }
 
-    public ArrayList<String>  modifyLine(String target, String replacement) {
+    public synchronized ArrayList<String>  modifyLine(String target, String replacement) {
         try {
             File file = new File(fileName);
             BufferedReader reader = new BufferedReader(new FileReader(file));

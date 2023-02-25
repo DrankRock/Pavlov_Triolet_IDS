@@ -23,22 +23,26 @@ public class ColoredTextPane extends JPanel
     Color[] nightColors = {Color.GREEN, Color.RED, Color.YELLOW, Color.PINK, Color.BLACK};
     private JTextPane tPane;
     private boolean lightMode;
+    private JPanel insideBorder;
 
     public ColoredTextPane(Dimension d){
         super(new BorderLayout());
+        insideBorder = new JPanel(new BorderLayout());
+        insideBorder.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.DARK_GRAY));
         colorSet = lightColors;
         lightMode = true;
 
-        MatteBorder eb = BorderFactory.createMatteBorder(2, 2, 2, 2, Color.DARK_GRAY);
         tPane = new JTextPane();                
-        tPane.setBorder(eb);
+        tPane.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         tPane.setMargin(new Insets(5, 5, 5, 5));
         this.setBackground(colorSet[4]);
         tPane.setEditable(false);
+        tPane.setFont(new Font("Nimbus Sans", Font.BOLD, 18));
 
         this.setPreferredSize(d);
         tPane.setPreferredSize(d);
-        this.add(tPane);
+        insideBorder.add(tPane);
+        this.add(insideBorder);
 
         setVisible(true);   
     }
@@ -51,8 +55,8 @@ public class ColoredTextPane extends JPanel
         StyleContext sc = StyleContext.getDefaultStyleContext();
         AttributeSet aset = sc.addAttribute(SimpleAttributeSet.EMPTY, StyleConstants.Foreground, c);
 
-        aset = sc.addAttribute(aset, StyleConstants.FontFamily, "Lucida Console");
-        aset = sc.addAttribute(aset, StyleConstants.FontSize, 14);
+        aset = sc.addAttribute(aset, StyleConstants.FontFamily, "Nimbus Sans");
+        aset = sc.addAttribute(aset, StyleConstants.FontSize, 18);
         aset = sc.addAttribute(aset, StyleConstants.Alignment, StyleConstants.ALIGN_JUSTIFIED);
 
         int len = tp.getDocument().getLength();

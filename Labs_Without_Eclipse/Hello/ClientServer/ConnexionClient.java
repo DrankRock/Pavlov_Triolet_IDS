@@ -10,9 +10,13 @@ import javax.swing.BorderFactory;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -20,21 +24,22 @@ import javax.swing.plaf.InsetsUIResource;
 
 /**
  * This class was created using WindowsBuilder in Eclipse, then adapted to suit our needs.
+ * Once the program exits, an actionlistener is triggered in ClientImpl and the execution continues.
  */
 public class ConnexionClient {
 
-	private JFrame frame;
+	public JFrame frame;
 	private JPasswordField pwdPassword;
 	private JTextField txtUsername;
-    private ClientImpl ci;
 
 	/**
 	 * Create the application.
 	 */
-	public ConnexionClient(ClientImpl ci) {
-        this.ci = ci;
+	public ConnexionClient() {
 		initialize();
         frame.setVisible(true);
+		frame.pack();
+        frame.setLocationRelativeTo(null);
 	}
 
 	/**
@@ -119,10 +124,21 @@ public class ConnexionClient {
 
     private void connect(){
         String username = txtUsername.getText();
-        String password = new String(pwdPassword.getPassword());
-        ci.connect(username, password);
+        if (username.contains(":")){
+            JOptionPane.showMessageDialog(new JFrame(), "Username can't contain ':'.", "Dialog", JOptionPane.ERROR_MESSAGE);
+            txtUsername.setText("");
+            return;
+        }
         frame.dispose();
-        System.exit(0);
     }
+
+    public String getUsername(){
+        return this.txtUsername.getText();
+    }
+    public String getPassword(){
+        return new String(this.pwdPassword.getPassword());
+    }
+
+
 
 }
