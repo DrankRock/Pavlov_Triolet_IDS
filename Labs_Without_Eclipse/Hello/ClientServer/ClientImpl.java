@@ -4,61 +4,22 @@ import java.rmi.server.UnicastRemoteObject;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+/**
+ * Implementation of the client, this function is what is called when a client wishes to log in. 
+ */
 public class ClientImpl {
 	private Server h;
-	private int myID;
 
-	Info_itf_Impl infos;
-	Thread listener;
-	ClientMessages messaging;
+	Info_itf_Impl infos; //current user informations
+	ClientMessages messaging; // receiving messages from the server
 
+	/**
+	 * Constructor. It does minimal things, to be able to give it as an argument
+	 * as soon as possible. Data can be changed later.
+	 */
 	public ClientImpl(String host, Server h) throws RemoteException, NotBoundException{
 		this.h = h;
 		this.infos = new Info_itf_Impl("", "");
-	}
-
-	public void connectionWithServer(String user, String pass) throws RemoteException, NotBoundException{
-		messaging = new ClientMessages(user);
-		ClientMessagesInterface messaging_stub = (ClientMessagesInterface) UnicastRemoteObject.exportObject(messaging, 0);
-		Tools.dprint("Launched messages stub");
-		String connectionID = h.connect(user, pass, messaging_stub) ;
-		if( connectionID == null){
-			System.out.println("Incorrect Password.");
-			System.exit(0);
-		} else {
-			infos = new Info_itf_Impl(user, connectionID);
-		}
-		messaging_stub.run(infos);
-		h.notifyOfActiveGUI(infos);
-	}
-	/**
-	 * Send message to server
-	 * @param s String containing the message
-	 * @throws RemoteException RMI connection issues
-	 */
-	public void sendMessage(String s) throws RemoteException{
-		Tools.dprint("[INFO] - "+infos.getName()+" sending \""+s+"\"");
-		h.message(infos, s);
-	}
-
-	/**
-	 * Disconnect from the server (not currently used by this class)
-	 * @throws RemoteException
-	 */
-	public void disconnect() throws RemoteException {
-		h.disconnect(infos);
-	}
-
-	public String toString(){
-		return infos.toString();
-	}
-	/**
-	 * Disconnects then quits
-	 * @throws RemoteException RMI Connection issues
-	 */
-	public void quit() throws RemoteException{
-		this.disconnect();
-		System.exit(0);
 	}
 
 	/**
@@ -94,26 +55,91 @@ public class ClientImpl {
 		if (username == ""){
 			throw new IllegalArgumentException("The entered Username is not valid");
 		}
-		System.out.println("Continue with "+username+", "+password);
+		Tools.dprint("Continue with "+username+", "+password);
 		this.connectionWithServer(username, password);
 	}
 
-	public Info_itf_Impl getInfos(){
-		return this.infos;
+	/**
+	 * Tries to connect to the server using username and password from the connection GUI.
+	 * If the password is incorrect, exits. Else, launches the chat GUI
+	 * @param user username
+	 * @param pass password
+	 * @throws RemoteException Errors with RMI
+	 * @throws NotBoundException Errors with RMI
+	 */
+	public void connectionWithServer(String user, String pass) throws RemoteException, NotBoundException{
+		messaging = new ClientMessages(user);
+		ClientMessagesInterface messaging_stub = (ClientMessagesInterface) UnicastRemoteObject.exportObject(messaging, 0);
+		Tools.dprint("Launched messages stub");
+		String connectionID = h.connect(user, pass, messaging_stub) ;
+		if( connectionID == null){
+			System.out.println("Incorrect Password.");
+			System.exit(0);
+		} else {
+			infos = new Info_itf_Impl(user, connectionID);
+		}
+		messaging_stub.run(infos);
+		h.notifyOfActiveGUI(infos);
 	}
 
+	/**
+	 * Send message to server
+	 * @param s String containing the message
+	 * @throws RemoteException RMI connection issues
+	 */
+	public void sendMessage(String s) throws RemoteException{
+		Tools.dprint("[INFO] - "+infos.getName()+" sending \""+s+"\"");
+		h.message(infos, s);
+	}
+
+	/**
+	 * Disconnect from the server (not currently used by this class)
+	 * @throws RemoteException
+	 */
+	public void disconnect() throws RemoteException {
+		h.disconnect(infos);
+	}
+
+	/**
+	 * Convert client to string
+	 */
+	public String toString(){
+		return infos.toString();
+	}
+
+	/**
+	 * Disconnects then quits
+	 * @throws RemoteException RMI Connection issues
+	 */
+	public void quit() throws RemoteException{
+		this.disconnect();
+		System.exit(0);
+	}
+
+	/**
+	 * Main class, launch everything
+	 * @param args Command line arguments. Nothing forces localhost
+	 * @throws RemoteException RMI Connection issues
+	 * @throws NotBoundException RMI Connection issues
+	 */
 	public static void main(String [] args) throws RemoteException, NotBoundException {
-		if (args.length != 1) {
+		String hst = null;
+		if (args.length == 0) {
+			hst = "localhost";
+		} else if (args.length != 1){
 			System.out.println("Usage: java HelloClient <rmiregistry host ex: localhost>");
 			return;
+		} else {
+			hst = args[0];
 		}
 		// Get remote object reference
-		Registry registry = LocateRegistry.getRegistry(args[0]); // get the registry of the host given in argument
+		Registry registry = LocateRegistry.getRegistry(hst); // get the registry of the host given in argument
 		// Here, we will always use "localhost"
 		Server h = (Server) registry.lookup("RunningServerPT1"); //get the server running on the RMI
 
-		ClientImpl hc = new ClientImpl(args[0], h);
+		ClientImpl hc = new ClientImpl(hst, h);
 		hc.run();
+		// On shutdown of the client, send a disconnect notification to the server
 		Runtime.getRuntime().addShutdownHook(new Thread() {
             public void run() {
                 try {
@@ -123,9 +149,5 @@ public class ClientImpl {
 				}
             }
         });
-		//ClientImpl cc = (ClientImpl) UnicastRemoteObject.exportObject(hc, 0);	
-
-		//System.exit(1);
-		//hc.run(args);
 	}
 }
