@@ -151,6 +151,8 @@ public class ConnexionClient {
 	 */
     private void connect(){
         String username = txtUsername.getText();
+		// You can't have ':' in your name because ':' is used to separate 
+		// the username from the salt and the password
         if (username.contains(":")){
             JOptionPane.showMessageDialog(new JFrame(), "Username can't contain ':'.", "Dialog", JOptionPane.ERROR_MESSAGE);
             txtUsername.setText("");
