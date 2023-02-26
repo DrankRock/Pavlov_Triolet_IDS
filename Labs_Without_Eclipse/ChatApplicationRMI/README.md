@@ -60,4 +60,4 @@ bash exec.sh noXdo
 
 ## Run
 
-After compiling and server runing, you just have (in a new terminal or not) to execute the command for a client 
+After compiling and server runing, you just have (in a new terminal or not) to execute the command for a client.
