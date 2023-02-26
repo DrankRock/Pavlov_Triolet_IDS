@@ -61,6 +61,9 @@ public class ClientMessages implements ClientMessagesInterface {
      * @throws RemoteException RMI Connection issues
      */
     public void displayMessage(ArrayList<String> ss) throws RemoteException{
+        if (ss == null || ss.size() == 0){
+            return;
+        }
         gui.addMessages(ss);
     }
 
