@@ -6,8 +6,11 @@
 xdo=$(command -v xdotool)
 if [ "$xdo" == "" ]
 then
+  if [ "$1" != "noXdo" ]
+  then
     echo "Requesting sudo to install xdotool"
     sudo apt-get install xdotool
+  fi
 fi
 
 # make mode
