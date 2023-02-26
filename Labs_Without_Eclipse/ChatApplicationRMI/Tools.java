@@ -5,6 +5,9 @@ import java.security.SecureRandom;
  * Tools set used around
  */
 public class Tools {
+    /**
+     * Set to true if you want additionnal prints
+     */
     public static boolean DEBUG = false;
     /**
      * Print only if DEBUG is true

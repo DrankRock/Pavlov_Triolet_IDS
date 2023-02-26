@@ -23,8 +23,10 @@ public  class ServerImpl implements Server {
 	private ArrayList<String> bufferHistory; // buffer to backup all the messages at once
 	private ArrayList<String> bufferLog; // buffer to backup all the logs at once
 	private ArrayList<String> activeUsers; // list of active users. Not currently used, but had the 
-	// intent to send private messages
-	public SecureRandom r = new SecureRandom();
+	/**
+	 * To have less predictable values
+	 */
+	public SecureRandom r;
 	FileLoader history;
 	FileLoader userData;
 	FileLoader logFile; 
@@ -46,6 +48,7 @@ public  class ServerImpl implements Server {
 	 * @param s server hash id
 	 */
 	public ServerImpl(String s){
+		r = new SecureRandom();
 		callerServerIDHash = s ;
 		userToPass = new HashMap<>();
 		userToID = new HashMap<>();
@@ -61,6 +64,8 @@ public  class ServerImpl implements Server {
 	/**
 	 * Start the GUI of the server 
 	 * @param s server identifier
+	 * @throws RemoteException RMI COnnection issues
+	 * @throws NotBoundException RMI Connection issues
 	 */
 	public void startGUI(String s) throws RemoteException, NotBoundException{
 		if (s.equals(callerServerIDHash)){
@@ -117,6 +122,12 @@ public  class ServerImpl implements Server {
 	 * A document here shows ideas on how to implement it, but as it was not the focus, we did not try
 	 * too much : 
 	 * https://docs.oracle.com/javase/8/docs/technotes/guides/rmi/socketfactory/index.html
+	 * 
+	 * @param user username of the user
+	 * @param pass password of the user (in clear !)
+	 * @param cmi ClientMessage stub to enable server->Client communication
+	 * @throws RemoteException RMI Connection issues
+	 * @return String containing the unique identifier of this client
 	 */
 	public String connect(String user, String pass, ClientMessagesInterface cmi) throws RemoteException{
 		String ret = null;
@@ -163,6 +174,8 @@ public  class ServerImpl implements Server {
 
 	/**
 	 * Remotely called, by client, to notify the server that it has launched the gui
+	 * @param inf username and identifier of a user
+	 * @throws RemoteException RMI Connection issues
 	 */
 	public void notifyOfActiveGUI(Info_itf_Impl inf) throws RemoteException{
 		if (inf.getID().equals(userToID.get(inf.getName()))){
@@ -199,6 +212,9 @@ public  class ServerImpl implements Server {
 	 * Remotely called, for user to broadcast a message.
 	 * infos are necessary to verify that the stored hash by the server is the same
 	 * as the one given by the client.
+	 * @param infos infos containing the username and identifier of the sender
+	 * @param s the message to send
+	 * @throws RemoteException RMI Connection issues
 	 */
 	public void message(Info_itf_Impl infos, String s) throws RemoteException{
 		// broadcast message
@@ -213,6 +229,8 @@ public  class ServerImpl implements Server {
 
 	/**
 	 * disconnect user from the server
+	 * @param infos infos containing the username and identifier of the sender
+	 * @throws RemoteException RMI Connection issues
 	 */
 	public void disconnect(Info_itf_Impl infos) throws RemoteException{
 		log("[DISCONNECT] - Removing "+infos.getName()+" from active users");
@@ -220,11 +238,12 @@ public  class ServerImpl implements Server {
 		activeUsers.remove(infos.getName());
 	}
 
-	/*
-	 *  LOADERS have to be public for HelloServer to call them !
-	 */
+/* ** ** LOADERS have to be public for HelloServer to call them ! ** ** */
+
 	/**
 	 * Load userData from the file, to an arraylist
+	 * @param s Filename to load from
+	 * @throws RemoteException RMI Connection issues
 	 */
 	public void loadUsers(String s) throws RemoteException{
 		if (s.equals(callerServerIDHash)){
@@ -243,9 +262,11 @@ public  class ServerImpl implements Server {
 	}
 
 	/**
-	 * Load chat hustory from the file, to an arraylist
+	 * Load chat history from the file, to an arraylist
+	 * @param s Filename to load from
+	 * @throws RemoteException RMI Connection issues
 	 */
-	public void loadHistory(String s){
+	public void loadHistory(String s) throws RemoteException{
 		if (s.equals(callerServerIDHash)){
 			chatHistory = history.readLines();
 			log("[SETUP] - HISTORY LOADED ("+chatHistory.size()+" lines)");
@@ -261,7 +282,9 @@ public  class ServerImpl implements Server {
 	}
 
 	/**
-	 * Start logs backup
+	 * Start logs backup every 30 seconds 
+	 * @param identifier HelloServer identifier to avoid server spoofing
+	 * @throws RemoteException RMI Connection issues
 	 */
 	public void startLogs(String identifier)  throws RemoteException{
 		if(identifier.equals(callerServerIDHash)){
@@ -290,6 +313,7 @@ public  class ServerImpl implements Server {
 
 	/**
 	 * Warns all the clients that the server is closed.
+	 * @throws RemoteException RMI Connection issues
 	 */
 	public void exitAll() throws RemoteException{
 		for (ClientMessagesInterface client : userToClientStub.values()) {

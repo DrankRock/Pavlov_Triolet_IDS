@@ -7,6 +7,9 @@ import java.awt.*;
  * GUI of the server, to show the logs
  */
 public class ServerApp extends JFrame{
+    /**
+     * chatArea containing all the logs displayed in the gui
+     */
     private ColoredTextPane chatArea;
 
     /**

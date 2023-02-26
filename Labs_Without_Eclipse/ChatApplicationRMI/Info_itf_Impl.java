@@ -5,7 +5,13 @@ import java.rmi.*;
  * Class containing two strings, to send infos about the client easily.
  */
 public class Info_itf_Impl implements Info_itf, Serializable{
+	/**
+	 * username of the user
+	 */
 	private String name;
+	/**
+	 * identifier of the user to avoid spoofing and prove he really is the user
+	 */
 	private String ID;
 	/**
 	 * Constructor

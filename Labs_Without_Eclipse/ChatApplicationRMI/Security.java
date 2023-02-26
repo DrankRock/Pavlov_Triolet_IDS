@@ -48,6 +48,11 @@ public final class Security {
         }
         return null;
     }
+    /**
+     * Salt and hash with a userData as argument
+     * @param ud the userData containing the informations necessary to hash
+     * @return a hashed string
+     */
     public static String encode(UserData ud){
         return encode(ud.getPassword(), ud.getSalt());
     }
@@ -56,8 +61,8 @@ public final class Security {
      * Convert a string composed of 
      * user:salt in hex:hashed password
      * to a UserData (String, String, String)
-     * @param s
-     * @return
+     * @param s String of type user:salt:password
+     * @return UserData with the same values
      */
     public static UserData stringToUserdata(String s ){
         String[] spl = s.split(":");
@@ -71,8 +76,8 @@ public final class Security {
     /**
      * Function from : https://www.baeldung.com/sha-256-hashing-java
      * used to convert bytes array to hex representation in string
-     * @param hash
-     * @return
+     * @param hash a hash made of byte[]
+     * @return a String conversion of the hash parameter
      */
     public static String bytesToHex(byte[] hash) {
         StringBuilder hexString = new StringBuilder(2 * hash.length);

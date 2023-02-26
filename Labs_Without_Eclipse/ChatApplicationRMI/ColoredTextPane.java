@@ -15,15 +15,36 @@ import javax.swing.text.StyleContext;
  * The coloredtextpane is actually editable sometimes, for a short timespan, to add messages.
  */
 public class ColoredTextPane extends JPanel
-{
-    Color[] colorSet; // current color set
-    // Text, Error, valid, whisper, background
-    // Whisper is never used because we did not have the time to implement private messages.
+{   
+    /**
+     * Current colorSet, either night or day
+     */
+    Color[] colorSet;
+    /**
+     * Text, Error, valid, whisper, background
+     * Whisper is never used because we did not have the time to implement private messages.
+     * 
+     * light colors are for the light theme, used by the chat app
+     */
     Color[] lightColors = {Color.BLACK, Color.RED, Color.GREEN, Color.CYAN, Color.WHITE};
+    /**
+     * Text, Error, valid, whisper, background
+     * Whisper is never used because we did not have the time to implement private messages.
+     * 
+     * night colors are for the night theme, used by the server app
+     */
     Color[] nightColors = {Color.GREEN, Color.RED, Color.YELLOW, Color.PINK, Color.BLACK};
-    //night mode is not currently setable.
+    /**
+     * JTextPane containing all the messages
+     */
     private JTextPane tPane;
+    /**
+     * True if lightmode is active, used to switch between light and night
+     */
     private boolean lightMode;
+    /**
+     * Only exists to have two borders in one panel
+     */
     private JPanel insideBorder;
 
     /**

@@ -13,12 +13,33 @@ import java.util.Arrays;
  * This was supposed to be a view, but it actually sends messages to the server.
  */
 public class ChatApp extends JFrame implements ActionListener {
+    /**
+     * ColoredTextPane containing all the messages
+     */
     private ColoredTextPane chatArea;
+    /**
+     * ScrollPane to allow scrolling inside the chatarea
+     */
     JScrollPane chatScrollPane ;
+    /**
+     * input field for the message to send
+     */
     private JTextField inputField;
+    /**
+     * informations about the user who called this gui
+     */
     private Info_itf_Impl user;
+    /**
+     * Username, the same as in user, but as a String, for clearer manipulation
+     */
     private String username;
+    /**
+     * Server stub to send messages to the server
+     */
     private Server communicationWithServer;
+    /**
+     * boolean variable to know if shift is pressed, because when shift is pressed, Enter is cancelled.
+     */
     Boolean shiftIsPressed = false;
     /**
      * Constructor of swing elements, and initialisation 
