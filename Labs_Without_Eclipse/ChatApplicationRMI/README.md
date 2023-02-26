@@ -41,15 +41,15 @@ Options are the following :
 
 To execute in `~/ChapApplicationRMI` with xdotool (ask you to install it if it isn't):
 ```sh
-bash exec.sh  //compile all and run the server into a different shell
+bash exec.sh
 ```
 -------> compile all and run the server into a different shell
 
 To execute in `~/ChapApplicationRMI` without xdotool (if the previous command doesn't work on your machine):
 ```sh
-bash exec.sh noXdo  //compile all and run the server into the current shell
+bash exec.sh noXdo
 ```
---------> compile all and run the server into a different shell
+--------> compile all and run the server into the current shell
 
 ## Run
 
