@@ -18,8 +18,8 @@ if [ "$1" == "make" ]; then
   exit 1
 fi
 
-# clear mode
-if [ "$1" == "clear" ]; then
+# clean mode
+if [ "$1" == "clean" ]; then
   echo "remove *.class"
   rm ./*.class
   exit 1
