@@ -44,8 +44,7 @@ public class ColoredTextPane extends JPanel
         tPane.setEditable(false);
         tPane.setFont(new Font("Nimbus Sans", Font.BOLD, 18));
 
-        this.setPreferredSize(d);
-        tPane.setPreferredSize(d);
+        tPane.setMinimumSize(d);
         insideBorder.add(tPane);
         this.add(insideBorder);
 
