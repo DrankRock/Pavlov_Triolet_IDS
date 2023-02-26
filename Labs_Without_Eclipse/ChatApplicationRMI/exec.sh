@@ -2,6 +2,19 @@
 
 # Author : Matvei Pavlov
 
+# kill java running in background appart from the first one launched
+if [[ "$1" == "kill_java" || "$2" == "kill_java" ]]; then
+  echo "kill java if already running"
+  pids=$(pidof java)
+  last_pid=$(echo $pids | awk '{print $NF}') 
+  for pid in $pids; do 
+    [[ $pid != $last_pid ]] && kill $pid; 
+  done
+  if [ "$1" == "kill_java" ]; then
+    exit 1
+  fi
+fi
+
 # check if xdotool is installed
 xdo=$(command -v xdotool)
 if [ "$xdo" == "" ]
@@ -25,6 +38,7 @@ fi
 if [ "$1" == "clean" ]; then
   echo "remove *.class"
   rm ./*.class
+  echo "${foo}"
   exit 1
 fi
 
@@ -54,6 +68,9 @@ if [ "$1" == "noXdo" ]; then
   fi # by ChatGPT lol
   rmiregistry &
   java ./HelloServer.java & 2> /dev/null
+  echo "wait for server to be ready"
+  sleep 2
+  echo -ne '\n'
   exit 1
 fi
 
