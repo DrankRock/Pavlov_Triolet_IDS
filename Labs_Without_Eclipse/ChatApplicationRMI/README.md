@@ -1,4 +1,4 @@
-#### Project Chat Apllication IDS
+## Project Chat Apllication IDS
 
 The goal of this exercice was to build a chat application, where participants can dynamically join, leave, exchange messages
 and have a history of their conversations. Plus, the chat system is persistent (persistent history of messages). This means that if the server
