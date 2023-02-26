@@ -16,6 +16,10 @@ public class ClientImpl {
 	/**
 	 * Constructor. It does minimal things, to be able to give it as an argument
 	 * as soon as possible. Data can be changed later.
+	 * @param host host on which server is launched, here localhost
+	 * @param h server stub to communicate with server
+	 * @throws RemoteException RMI Connection issues
+	 * @throws NotBoundException RMI Connection issues
 	 */
 	public ClientImpl(String host, Server h) throws RemoteException, NotBoundException{
 		this.h = h;
@@ -51,10 +55,10 @@ public class ClientImpl {
 
 	/**
 	 * Second step of the execution : connect to the server
-	 * @param username
-	 * @param password
+	 * @param username username of the client
+	 * @param password password of the client, in clear
 	 * @throws RemoteException RMI Connection issues
-	 * @throws NotBoundException
+	 * @throws NotBoundException RMI Connection issues
 	 */
 	public void continueRun(String username, String password) throws RemoteException, NotBoundException{
 		Tools.dprint("Continue with "+username+", "+password);
@@ -96,7 +100,7 @@ public class ClientImpl {
 
 	/**
 	 * Disconnect from the server (not currently used by this class)
-	 * @throws RemoteException
+	 * @throws RemoteException RMI Connection issues
 	 */
 	public void disconnect() throws RemoteException {
 		h.disconnect(infos);

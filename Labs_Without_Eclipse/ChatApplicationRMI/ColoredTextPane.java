@@ -130,7 +130,7 @@ public class ColoredTextPane extends JPanel
 
     /**
      * Add message with error text color
-     * @param s
+     * @param s the message to print
      */
     public void errorMessage(String s){
         appendToPane(tPane, s+"\n", colorSet[1]);
@@ -138,7 +138,7 @@ public class ColoredTextPane extends JPanel
 
     /**
      * Add message with valid text color
-     * @param s
+     * @param s the message to print
      */
     public void validMessage(String s){
         appendToPane(tPane, s+"\n", colorSet[2]);
@@ -146,7 +146,7 @@ public class ColoredTextPane extends JPanel
 
     /**
      * Add message with whisper (private message) text color
-     * @param s
+     * @param s the message to print
      */
     public void whisperMessage(String s){
         appendToPane(tPane, s+"\n", colorSet[3]);

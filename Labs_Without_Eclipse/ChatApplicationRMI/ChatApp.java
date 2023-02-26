@@ -150,7 +150,7 @@ public class ChatApp extends JFrame implements ActionListener {
     }
     /**
      * Add message with no user (server messages)
-     * @param s
+     * @param s message to add
      */
     public synchronized void addMessage(String s){
         chatArea.normalMessage(s);
@@ -158,7 +158,7 @@ public class ChatApp extends JFrame implements ActionListener {
 
     /**
      * Add message with no user (server messages), but in valid form, so green
-     * @param s
+     * @param s message to add
      */
     public synchronized void addMessageValid(String s){
         chatArea.validMessage(s);
@@ -166,7 +166,7 @@ public class ChatApp extends JFrame implements ActionListener {
 
     /**
      * Add message as an array of string (for loading history))
-     * @param s
+     * @param s message to add
      */
     public void addMessages(ArrayList<String> s){
         for (String st : s){
@@ -183,7 +183,7 @@ public class ChatApp extends JFrame implements ActionListener {
 
     /**
      * run function, to be used by caller class
-     * @throws RemoteException
+     * @throws RemoteException RMI Connection issues
      */
     public void run() throws RemoteException{
         this.setVisible(true);
@@ -201,12 +201,5 @@ public class ChatApp extends JFrame implements ActionListener {
      */
     public void forceExit(){
         chatArea.errorMessage("The Server closed. This window will now stop functionning. Please exit and re-launch when the server is running again. Thank you for your trust.\nPlease note that any message sent will likely result in an error.");
-    }
-
-    private void autoScroll(){
-        JScrollBar verticalScrollBar = chatScrollPane.getVerticalScrollBar();
-        if (verticalScrollBar.getValue() == verticalScrollBar.getMaximum()){
-            verticalScrollBar.setValue(verticalScrollBar.getMaximum());
-        }
     }
 }

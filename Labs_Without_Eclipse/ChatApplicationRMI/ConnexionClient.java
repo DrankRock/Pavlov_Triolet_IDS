@@ -27,6 +27,9 @@ import javax.swing.plaf.InsetsUIResource;
  */
 public class ConnexionClient {
 
+	/**
+	 * Frame containing the main gui, password input field and username input field
+	 */
 	public JFrame frame;
 	private JPasswordField pwdPassword;
 	private JTextField txtUsername;
