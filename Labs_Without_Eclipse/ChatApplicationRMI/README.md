@@ -16,8 +16,15 @@ We used the Java 19 version (both jdk and jre).
 
 A repository called \textbf{docs} contains all the javadoc of the projet.
 
-Cuurents functionalities are the following :
-- 
+Curents functionalities are the following :
+- launch a server with an interface
+- Connect with username and password to the server
+    -> if your username is not in the database, registers you
+    -> else, if the password matches the one in the database, log you in
+- talk to multiple people in the same channel
+- leave the conversation
+- be informed when the server stops
+- retrieve the history of the conversation
 
 
 ## Compilation
