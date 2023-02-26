@@ -14,7 +14,7 @@ We used the Java 19 version (both jdk and jre).
 
 ## Functionalities
 
-A repository called **`\~/docs`** contains all the javadoc of the projet.
+A repository called **`~/docs`** contains all the javadoc of the projet.
 
 Curents functionalities are the following :
 - launch a server with an interface
@@ -60,4 +60,4 @@ bash exec.sh noXdo
 
 ## Run
 
-After compiling and server runing, you just have to open a new terminal in the same folder and execute the command for a client 
+After compiling and server runing, you just have (in a new terminal or not) to execute the command for a client 
