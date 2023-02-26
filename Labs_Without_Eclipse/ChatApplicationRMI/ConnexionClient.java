@@ -167,7 +167,12 @@ public class ConnexionClient {
 	 * @return the username entered
 	 */
     public String getUsername(){
-        return this.txtUsername.getText();
+		String user = this.txtUsername.getText();
+		if (user.length()<3){
+			return null;
+		} else {
+			return this.txtUsername.getText();
+		}
     }
 
 	/**
@@ -175,8 +180,25 @@ public class ConnexionClient {
 	 * @return the password IN CLEAR TEXT
 	 */
     public String getPassword(){
-        return new String(this.pwdPassword.getPassword());
+		String pwd = new String(this.pwdPassword.getPassword());
+		if (pwd.length() < 8){
+			System.out.println("This password is less than 8 caracters");
+			return null;
+		} else if (isAlpha(pwd)){
+			System.out.println("This password contains only letters");
+			return null;
+		}
+        return pwd;
     }
+
+	/**
+	 * Check if password is only letters
+	 * @param s password
+	 * @return true if only letters
+	 */
+	private Boolean isAlpha(String s ){
+		return s.matches("[a-zA-Z]+");
+	}
 
 
 

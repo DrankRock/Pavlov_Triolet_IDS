@@ -34,11 +34,16 @@ public class ClientImpl {
 			public void windowClosed(WindowEvent e) {
 				String username = cc.getUsername();
 				String password = cc.getPassword();
+				if (username == null || password == null){
+					System.out.println("Username has to be 3 letters or more.\nPassword has to be 8 caracters or more and not contain only letters.");
+					System.exit(1);
+				}
 				try {
-					System.out.println(username+", "+password);
+					Tools.dprint(username+", "+password);
 					continueRun(username, password);
 				} catch (RemoteException | NotBoundException e1) {
 					e1.printStackTrace();
+					System.exit(0);
 				}
 			}
 		});
@@ -52,9 +57,6 @@ public class ClientImpl {
 	 * @throws NotBoundException
 	 */
 	public void continueRun(String username, String password) throws RemoteException, NotBoundException{
-		if (username == ""){
-			throw new IllegalArgumentException("The entered Username is not valid");
-		}
 		Tools.dprint("Continue with "+username+", "+password);
 		this.connectionWithServer(username, password);
 	}
