@@ -19,6 +19,14 @@ public class FileLoader {
      */
     public FileLoader(String fileName) {
         this.fileName = fileName;
+        File file = new File(fileName);
+        if (!file.exists()) {
+            try {
+				file.createNewFile();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+        }
     }
 
     /**
