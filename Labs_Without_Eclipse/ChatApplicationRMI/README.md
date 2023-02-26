@@ -14,7 +14,7 @@ We used the Java 19 version (both jdk and jre).
 
 ## Functionalities
 
-A repository called **/docs** contains all the javadoc of the projet.
+A repository called **`\~/docs`** contains all the javadoc of the projet.
 
 Curents functionalities are the following :
 - launch a server with an interface
