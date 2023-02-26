@@ -6,7 +6,8 @@ shuts down and restarts, it can recover the message history.\\
 There is also a graphical user interface implemented for the chat system.\\
 
 
-For this app, we implement our chat  according to the architecture of an RMI application 
+For this app, we implement our chat  according to the architecture of an RMI application, with a Graphical User Interface
+![image](https://user-images.githubusercontent.com/32172257/221440090-24075ee5-01f2-42fc-ab4c-c1d3d437576d.png)
 
 ## Java version
 
