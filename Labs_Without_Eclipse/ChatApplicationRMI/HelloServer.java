@@ -6,6 +6,14 @@ import java.rmi.registry.*;
  */
 public class HelloServer {
 
+	/**
+	 * Main class, launching in the correct order the elements of the server.
+	 * 
+	 * Please note that sometimes a warning will be launched, likely because a constructor is not
+	 * finished before the execution of a function. This has never blocked the server, and 
+	 * we can't seem to find how to fix it
+	 * @param args command line arguments
+	 */
   public static void  main(String [] args) {
 	  try {
 		  // Create a remote object

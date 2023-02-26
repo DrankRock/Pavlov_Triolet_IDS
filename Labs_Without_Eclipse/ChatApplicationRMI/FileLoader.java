@@ -15,7 +15,7 @@ public class FileLoader {
 
     /**
      * Constructor
-     * @param fileName
+     * @param fileName the name of the file to open
      */
     public FileLoader(String fileName) {
         this.fileName = fileName;
@@ -47,7 +47,7 @@ public class FileLoader {
     /**
      * addLine to a file
      * Synchronized, to avoid adding lines on top of each others and losing data
-     * @param line
+     * @param line the line to append at the end of the file
      */
     public synchronized void addLine(String line) {
         try {
