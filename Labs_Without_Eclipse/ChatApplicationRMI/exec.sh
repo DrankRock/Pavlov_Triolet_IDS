@@ -32,6 +32,28 @@ if [ "$1" == "client" ]; then
   exit 1
 fi
 
+# noXdotool mode
+if [ "$1" == "noXdo" ]; then
+  echo "remove *.class"
+  # rm ./*.class
+  echo "compile *"
+  javac *.java
+  pid=$(pidof rmiregistry)
+  echo "kill rmiregistry if already running"
+  # Check if the process ID is not empty
+  if [ -n "$pid" ]
+  then
+    # Kill the rmiregistry process
+    kill $pid > /dev/null
+  else
+    # Do nothing if rmiregistry is not active
+    echo "" > /dev/null
+  fi # by ChatGPT lol
+  rmiregistry &
+  java ./HelloServer.java & 2> /dev/null
+  exit 1
+fi
+
 ### Automatically launch the server in a new terminal
 echo "remove *.class"
 # rm ./*.class
