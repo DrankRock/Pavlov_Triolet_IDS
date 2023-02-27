@@ -137,6 +137,7 @@ public class ColoredTextPane extends JPanel
 
     /**
      * give the size in pixel of the character given in argument, with the custom font used 
+     * this is from https://stackoverflow.com/a/14832962
      * @param c the character
      * @return the size as an int
      */
@@ -146,11 +147,12 @@ public class ColoredTextPane extends JPanel
         Font font = new Font("Nimbus Sans", Font.PLAIN, 18);
         return (int)(font.getStringBounds(String.valueOf(c), frc).getWidth());
     }
-    
+
     /**
      * give the size in pixel of the string given in argument, with the custom font used 
+     * this is from https://stackoverflow.com/a/14832962
      * @param s the String
-     * @return the size as an int
+     * @return the size as an int   
      */
     private int sizeOfString(String s){
         AffineTransform affinetransform = new AffineTransform();     
