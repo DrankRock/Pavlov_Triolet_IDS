@@ -171,6 +171,7 @@ public class ConnexionClient {
 	 */
     public String getUsername(){
 		String user = this.txtUsername.getText();
+		user = user.trim();
 		if (user.length()<3){
 			return null;
 		} else {
