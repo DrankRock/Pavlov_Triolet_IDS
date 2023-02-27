@@ -135,12 +135,23 @@ public class ColoredTextPane extends JPanel
         tPane.setEditable(false);
     }
 
+    /**
+     * give the size in pixel of the character given in argument, with the custom font used 
+     * @param c the character
+     * @return the size as an int
+     */
     private int sizeOfChar(char c){
         AffineTransform affinetransform = new AffineTransform();     
         FontRenderContext frc = new FontRenderContext(affinetransform,true,true);     
         Font font = new Font("Nimbus Sans", Font.PLAIN, 18);
         return (int)(font.getStringBounds(String.valueOf(c), frc).getWidth());
     }
+    
+    /**
+     * give the size in pixel of the string given in argument, with the custom font used 
+     * @param s the String
+     * @return the size as an int
+     */
     private int sizeOfString(String s){
         AffineTransform affinetransform = new AffineTransform();     
         FontRenderContext frc = new FontRenderContext(affinetransform,true,true);     
@@ -161,7 +172,7 @@ public class ColoredTextPane extends JPanel
         StyleContext sc = StyleContext.getDefaultStyleContext();
         AttributeSet aset = sc.addAttribute(SimpleAttributeSet.EMPTY, StyleConstants.Foreground, c);
 
-        aset = sc.addAttribute(aset, StyleConstants.FontFamily, "Lucida Console");
+        aset = sc.addAttribute(aset, StyleConstants.FontFamily, "Nimbus Sans");
         aset = sc.addAttribute(aset, StyleConstants.FontSize, size);
         aset = sc.addAttribute(aset, StyleConstants.Alignment, StyleConstants.ALIGN_JUSTIFIED);
 
