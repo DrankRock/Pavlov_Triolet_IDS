@@ -7,6 +7,10 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 
+import java.awt.Font;
+import java.awt.font.FontRenderContext;
+import java.awt.geom.AffineTransform;
+
 /**
  * This whole function was initialy found here : https://stackoverflow.com/a/9652143
  * And modified to suit our needs.
@@ -99,12 +103,49 @@ public class ColoredTextPane extends JPanel
         aset = sc.addAttribute(aset, StyleConstants.FontSize, 18);
         aset = sc.addAttribute(aset, StyleConstants.Alignment, StyleConstants.ALIGN_JUSTIFIED);
 
+        int textWidth = sizeOfString(msg);
+        //System.out.println("-----\nMessage : "+msg+"\nSize : "+textWidth+"\nMaxWdidth : "+tp.getWidth()+"\n----");
+        int maxWidth = tp.getWidth();
+        String newMsg = "";
+        int iter = 0;
+        int bufferSize = 0;
+        if (((int)maxWidth/textWidth) < 1){
+            // text is too long
+            while(iter < msg.length()){ 
+                char currentChar = msg.charAt(iter);
+                int currentSize = sizeOfChar(currentChar);
+                if ((bufferSize + currentSize+10 ) > maxWidth) {
+                    newMsg+="\n"+currentChar;
+                    bufferSize = currentSize;
+                } else {
+                    newMsg+=currentChar;
+                    bufferSize+=currentSize;
+                }
+                iter += 1;
+            }
+        }
+        if (newMsg == ""){
+            newMsg = msg;
+        }
         int len = tp.getDocument().getLength();
         tp.setCaretPosition(len);
         tp.setCharacterAttributes(aset, false);
         tPane.setEditable(true);
-        tp.replaceSelection(msg);
+        tp.replaceSelection(newMsg);
         tPane.setEditable(false);
+    }
+
+    private int sizeOfChar(char c){
+        AffineTransform affinetransform = new AffineTransform();     
+        FontRenderContext frc = new FontRenderContext(affinetransform,true,true);     
+        Font font = new Font("Nimbus Sans", Font.PLAIN, 18);
+        return (int)(font.getStringBounds(String.valueOf(c), frc).getWidth());
+    }
+    private int sizeOfString(String s){
+        AffineTransform affinetransform = new AffineTransform();     
+        FontRenderContext frc = new FontRenderContext(affinetransform,true,true);     
+        Font font = new Font("Nimbus Sans", Font.PLAIN, 18);
+        return (int)(font.getStringBounds(s, frc).getWidth());
     }
 
     /**
