@@ -12,6 +12,7 @@
 
 # Package Files #
 *.jar
+!./rabbit_mq/jars/*.jar
 *.war
 *.nar
 *.ear
