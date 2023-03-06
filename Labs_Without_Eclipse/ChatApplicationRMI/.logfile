@@ -350,3 +350,486 @@
 (26/02/2023-18:56:37:537:68197537) [INFO] - Message received from <mat>
     Added to history !
 (26/02/2023-18:56:45:592:68205592) [INFO] - BACK UP HISTORY DONE, 1 entries added.
+(26/02/2023-22:42:52:994:81772994) [INFO] - BACK UP LOGFILE DONE, 7 entries added.
+(26/02/2023-22:43:22:994:81802994) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(26/02/2023-22:43:52:994:81832994) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(26/02/2023-22:44:22:994:81862994) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(26/02/2023-22:44:29:760:81869760) [INFO] - BACK UP HISTORY DONE, 0 entries added.
+(26/02/2023-22:44:38:524:81878524) #### ~New Server Start : 26/02/2023-22:44:38:523:81878523####
+(26/02/2023-22:44:38:562:81878562) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(26/02/2023-22:44:38:562:81878562) [SETUP] - Loading Users : 
+(26/02/2023-22:44:38:639:81878639) [SETUP] | - line :'' Contains no user:salt:password
+(26/02/2023-22:44:38:673:81878673) [SETUP] | - Loaded : mat
+(26/02/2023-22:44:38:709:81878709) [SETUP] - HISTORY LOADED (8 lines)
+(26/02/2023-22:45:08:561:81908561) [INFO] - BACK UP LOGFILE DONE, 5 entries added.
+(26/02/2023-22:45:11:308:81911308) [CONNECT] (somebody) - somebody
+(26/02/2023-22:45:11:312:81911312) [CONNECT] (somebody) - create user
+(26/02/2023-22:45:17:367:81917367) [DISCONNECT] - Removing somebody from active users
+(26/02/2023-22:45:19:803:81919803) [INFO] - BACK UP HISTORY DONE, 0 entries added.
+(26/02/2023-22:45:28:154:81928154) #### ~New Server Start : 26/02/2023-22:45:28:151:81928151####
+(26/02/2023-22:45:28:188:81928188) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(26/02/2023-22:45:28:188:81928188) [SETUP] - Loading Users : 
+(26/02/2023-22:45:28:255:81928255) [SETUP] | - line :'' Contains no user:salt:password
+(26/02/2023-22:45:28:289:81928289) [SETUP] | - Loaded : mat
+(26/02/2023-22:45:28:322:81928322) [SETUP] | - Loaded : somebody
+(26/02/2023-22:45:37:558:81937558) [CONNECT] (somebody) - somebody
+(26/02/2023-22:45:37:562:81937562) [CONNECT] (somebody) - user exists
+(26/02/2023-22:45:37:565:81937565) [CONNECT] (somebody) - somebody successfully connected.
+(26/02/2023-22:45:43:476:81943476) [INFO] - Message received from <somebody>
+    Added to history !
+(26/02/2023-22:49:51:060:82191060) #### ~New Server Start : 26/02/2023-22:49:51:059:82191059####
+(26/02/2023-22:50:37:113:82237113) #### ~New Server Start : 26/02/2023-22:50:37:112:82237112####
+(26/02/2023-22:50:37:152:82237152) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(26/02/2023-22:50:37:152:82237152) [SETUP] - Loading Users : 
+(26/02/2023-22:50:37:227:82237227) [SETUP] | - line :'' Contains no user:salt:password
+(26/02/2023-22:50:37:266:82237266) [SETUP] | - Loaded : mat
+(26/02/2023-22:50:37:298:82237298) [SETUP] | - Loaded : somebody
+(26/02/2023-22:50:37:333:82237333) [SETUP] - HISTORY LOADED (0 lines)
+(26/02/2023-22:50:54:148:82254148) [CONNECT] (somebody) - somebody
+(26/02/2023-22:50:54:149:82254149) [CONNECT] (somebody) - user exists
+(26/02/2023-22:50:54:151:82254151) [CONNECT] (somebody) - somebody successfully connected.
+(26/02/2023-22:51:00:020:82260020) [INFO] - Message received from <somebody>
+    Added to history !
+(26/02/2023-22:51:07:151:82267151) [INFO] - BACK UP LOGFILE DONE, 10 entries added.
+(26/02/2023-22:51:18:610:82278610) [CONNECT] (the) - the
+(26/02/2023-22:51:18:619:82278619) [CONNECT] (the) - create user
+(26/02/2023-22:51:35:426:82295426) [INFO] - Message received from <the>
+    Added to history !
+(26/02/2023-22:51:37:151:82297151) [INFO] - BACK UP LOGFILE DONE, 4 entries added.
+(26/02/2023-22:51:41:644:82301644) [DISCONNECT] - Removing the from active users
+(26/02/2023-22:51:44:728:82304728) [DISCONNECT] - Removing somebody from active users
+(26/02/2023-22:51:48:581:82308581) [INFO] - BACK UP HISTORY DONE, 2 entries added.
+(26/02/2023-22:54:01:568:82441568) #### ~New Server Start : 26/02/2023-22:54:01:565:82441565####
+(26/02/2023-22:54:01:605:82441605) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(26/02/2023-22:54:01:605:82441605) [SETUP] - Loading Users : 
+(26/02/2023-22:54:01:681:82441681) [SETUP] | - line :'' Contains no user:salt:password
+(26/02/2023-22:54:01:722:82441722) [SETUP] | - Loaded : mat
+(26/02/2023-22:54:01:759:82441759) [SETUP] | - Loaded : somebody
+(26/02/2023-22:54:01:792:82441792) [SETUP] | - Loaded : the
+(26/02/2023-22:54:01:825:82441825) [SETUP] - HISTORY LOADED (2 lines)
+(26/02/2023-22:54:03:701:82443701) [INFO] - BACK UP HISTORY DONE, 0 entries added.
+(26/02/2023-22:54:25:768:82465768) #### ~New Server Start : 26/02/2023-22:54:25:767:82465767####
+(26/02/2023-22:54:25:820:82465820) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(26/02/2023-22:54:25:820:82465820) [SETUP] - Loading Users : 
+(26/02/2023-22:54:25:899:82465899) [SETUP] | - line :'' Contains no user:salt:password
+(26/02/2023-22:54:25:939:82465939) [SETUP] | - Loaded : mat
+(26/02/2023-22:54:25:975:82465975) [SETUP] | - Loaded : somebody
+(26/02/2023-22:54:26:017:82466017) [SETUP] | - Loaded : the
+(26/02/2023-22:54:26:055:82466055) [SETUP] - HISTORY LOADED (2 lines)
+(26/02/2023-22:54:30:334:82470334) [INFO] - BACK UP HISTORY DONE, 0 entries added.
+(26/02/2023-22:55:56:241:82556241) #### ~New Server Start : 26/02/2023-22:55:56:238:82556238####
+(26/02/2023-22:55:56:284:82556284) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(26/02/2023-22:55:56:284:82556284) [SETUP] - Loading Users : 
+(26/02/2023-22:55:56:367:82556367) [SETUP] | - line :'' Contains no user:salt:password
+(26/02/2023-22:55:56:404:82556404) [SETUP] | - Loaded : mat
+(26/02/2023-22:55:56:440:82556440) [SETUP] | - Loaded : somebody
+(26/02/2023-22:55:56:475:82556475) [SETUP] | - Loaded : the
+(26/02/2023-22:55:56:510:82556510) [SETUP] - HISTORY LOADED (2 lines)
+(26/02/2023-22:56:01:103:82561103) [INFO] - BACK UP HISTORY DONE, 0 entries added.
+(26/02/2023-22:56:59:621:82619621) #### ~New Server Start : 26/02/2023-22:56:59:621:82619621####
+(26/02/2023-22:56:59:661:82619661) [SETUP] - Loading Users : 
+(26/02/2023-22:56:59:661:82619661) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(26/02/2023-22:56:59:701:82619701) [SETUP] | - line :'' Contains no user:salt:password
+(26/02/2023-22:56:59:769:82619769) [SETUP] | - Loaded : mat
+(26/02/2023-22:56:59:802:82619802) [SETUP] | - Loaded : somebody
+(26/02/2023-22:56:59:836:82619836) [SETUP] | - Loaded : the
+(26/02/2023-22:56:59:872:82619872) [SETUP] - HISTORY LOADED (2 lines)
+(26/02/2023-22:57:02:882:82622882) [INFO] - BACK UP HISTORY DONE, 0 entries added.
+(26/02/2023-22:57:15:602:82635602) #### ~New Server Start : 26/02/2023-22:57:15:601:82635601####
+(26/02/2023-22:57:15:638:82635638) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(26/02/2023-22:57:15:638:82635638) [SETUP] - Loading Users : 
+(26/02/2023-22:57:15:712:82635712) [SETUP] | - line :'' Contains no user:salt:password
+(26/02/2023-22:57:15:747:82635747) [SETUP] | - Loaded : mat
+(26/02/2023-22:57:15:786:82635786) [SETUP] | - Loaded : somebody
+(26/02/2023-22:57:15:822:82635822) [SETUP] | - Loaded : the
+(26/02/2023-22:57:15:859:82635859) [SETUP] - HISTORY LOADED (2 lines)
+(26/02/2023-22:57:19:373:82639373) [INFO] - BACK UP HISTORY DONE, 0 entries added.
+(26/02/2023-22:58:34:989:82714989) #### ~New Server Start : 26/02/2023-22:58:34:988:82714988####
+(26/02/2023-22:59:00:364:82740364) #### ~New Server Start : 26/02/2023-22:59:00:363:82740363####
+(26/02/2023-22:59:00:401:82740401) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(26/02/2023-22:59:00:401:82740401) [SETUP] - Loading Users : 
+(26/02/2023-22:59:00:473:82740473) [SETUP] | - line :'' Contains no user:salt:password
+(26/02/2023-22:59:00:509:82740509) [SETUP] | - Loaded : mat
+(26/02/2023-22:59:00:546:82740546) [SETUP] | - Loaded : somebody
+(26/02/2023-22:59:00:581:82740581) [SETUP] | - Loaded : the
+(26/02/2023-22:59:00:619:82740619) [SETUP] - HISTORY LOADED (2 lines)
+(26/02/2023-22:59:02:908:82742908) [INFO] - BACK UP HISTORY DONE, 0 entries added.
+(26/02/2023-22:59:26:141:82766141) #### ~New Server Start : 26/02/2023-22:59:26:140:82766140####
+(26/02/2023-22:59:26:196:82766196) [SETUP] - Loading Users : 
+(26/02/2023-22:59:26:196:82766196) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(26/02/2023-22:59:26:237:82766237) [SETUP] | - line :'' Contains no user:salt:password
+(26/02/2023-22:59:26:317:82766317) [SETUP] | - Loaded : mat
+(26/02/2023-22:59:26:359:82766359) [SETUP] | - Loaded : somebody
+(26/02/2023-22:59:26:397:82766397) [SETUP] | - Loaded : the
+(26/02/2023-22:59:26:442:82766442) [SETUP] - HISTORY LOADED (2 lines)
+(26/02/2023-22:59:48:544:82788544) [CONNECT] (smash_mouth) - smash_mouth
+(26/02/2023-22:59:48:548:82788548) [CONNECT] (smash_mouth) - create user
+(26/02/2023-22:59:56:196:82796196) [INFO] - BACK UP LOGFILE DONE, 9 entries added.
+(26/02/2023-23:00:26:195:82826195) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(26/02/2023-23:00:51:108:82851108) [DISCONNECT] - Removing  from active users
+(26/02/2023-23:00:56:195:82856195) [INFO] - BACK UP LOGFILE DONE, 2 entries added.
+(26/02/2023-23:01:26:195:82886195) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(26/02/2023-23:01:56:195:82916195) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(26/02/2023-23:02:26:195:82946195) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(26/02/2023-23:02:56:195:82976195) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(26/02/2023-23:03:26:195:83006195) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(26/02/2023-23:03:56:195:83036195) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(26/02/2023-23:04:26:195:83066195) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(26/02/2023-23:04:56:195:83096195) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(26/02/2023-23:05:26:195:83126195) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(26/02/2023-23:05:56:195:83156195) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(26/02/2023-23:06:26:195:83186195) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(26/02/2023-23:06:56:195:83216195) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(26/02/2023-23:07:26:195:83246195) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(26/02/2023-23:07:31:447:83251447) [INFO] - BACK UP HISTORY DONE, 0 entries added.
+(27/02/2023-16:19:06:270:58746270) #### ~New Server Start : 27/02/2023-16:19:06:269:58746269####
+(27/02/2023-16:19:06:303:58746303) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-16:19:06:303:58746303) [SETUP] - Loading Users : 
+(27/02/2023-16:19:06:375:58746375) [SETUP] | - line :'' Contains no user:salt:password
+(27/02/2023-16:19:06:413:58746413) [SETUP] | - Loaded : mat
+(27/02/2023-16:19:06:449:58746449) [SETUP] | - Loaded : somebody
+(27/02/2023-16:19:06:485:58746485) [SETUP] | - Loaded : the
+(27/02/2023-16:19:06:521:58746521) [SETUP] | - Loaded : smash_mouth
+(27/02/2023-16:19:06:561:58746561) [SETUP] - HISTORY LOADED (2 lines)
+(27/02/2023-16:19:20:198:58760198) [CONNECT] (mat) - mat
+(27/02/2023-16:19:20:202:58760202) [CONNECT] (mat) - user exists
+(27/02/2023-16:19:20:204:58760204) [CONNECT] (mat) - mat successfully connected.
+(27/02/2023-16:19:36:304:58776304) [INFO] - BACK UP LOGFILE DONE, 11 entries added.
+(27/02/2023-16:19:50:727:58790727) [DISCONNECT] - Removing mat from active users
+(27/02/2023-16:20:06:303:58806303) [INFO] - BACK UP LOGFILE DONE, 2 entries added.
+(27/02/2023-16:20:19:901:58819901) [CONNECT] (mat) - mat
+(27/02/2023-16:20:19:904:58819904) [CONNECT] (mat) - user exists
+(27/02/2023-16:20:19:906:58819906) [CONNECT] (mat) - mat successfully connected.
+(27/02/2023-16:20:36:303:58836303) [INFO] - BACK UP LOGFILE DONE, 4 entries added.
+(27/02/2023-16:21:06:303:58866303) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-16:21:36:303:58896303) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-16:21:56:156:58916156) [INFO] - Message received from <mat>
+    Added to history !
+(27/02/2023-16:22:02:651:58922651) [INFO] - Message received from <mat>
+    Added to history !
+(27/02/2023-16:22:06:303:58926303) [INFO] - BACK UP LOGFILE DONE, 3 entries added.
+(27/02/2023-16:22:06:801:58926801) [DISCONNECT] - Removing mat from active users
+(27/02/2023-16:22:36:303:58956303) [INFO] - BACK UP LOGFILE DONE, 2 entries added.
+(27/02/2023-16:23:06:303:58986303) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-16:23:06:597:58986597) [INFO] - BACK UP HISTORY DONE, 2 entries added.
+(27/02/2023-16:23:36:303:59016303) [INFO] - BACK UP LOGFILE DONE, 2 entries added.
+(27/02/2023-16:24:06:303:59046303) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-16:24:36:303:59076303) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-16:25:06:303:59106303) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-16:25:36:303:59136303) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-16:26:06:303:59166303) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-16:26:36:303:59196303) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-16:27:06:303:59226303) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-16:27:36:303:59256303) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-16:28:06:303:59286303) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-16:28:36:303:59316303) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-16:29:06:303:59346303) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-16:29:36:306:59376306) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-16:29:45:643:59385643) [INFO] - BACK UP HISTORY DONE, 0 entries added.
+(27/02/2023-16:29:51:491:59391491) #### ~New Server Start : 27/02/2023-16:29:51:490:59391490####
+(27/02/2023-16:29:51:578:59391578) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-16:29:51:578:59391578) [SETUP] - Loading Users : 
+(27/02/2023-16:29:51:675:59391675) [SETUP] | - line :'' Contains no user:salt:password
+(27/02/2023-16:29:51:720:59391720) [SETUP] | - Loaded : mat
+(27/02/2023-16:29:51:760:59391760) [SETUP] | - Loaded : somebody
+(27/02/2023-16:29:51:801:59391801) [SETUP] | - Loaded : the
+(27/02/2023-16:29:51:850:59391850) [SETUP] | - Loaded : smash_mouth
+(27/02/2023-16:29:51:899:59391899) [SETUP] - HISTORY LOADED (4 lines)
+(27/02/2023-16:30:08:687:59408687) [CONNECT] (mat) - mat
+(27/02/2023-16:30:08:691:59408691) [CONNECT] (mat) - user exists
+(27/02/2023-16:30:08:694:59408694) [CONNECT] (mat) - mat successfully connected.
+(27/02/2023-16:30:21:578:59421578) [INFO] - BACK UP LOGFILE DONE, 11 entries added.
+(27/02/2023-16:30:51:577:59451577) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-16:31:21:577:59481577) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-16:31:51:577:59511577) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-16:32:21:578:59541578) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-16:32:51:578:59571578) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-16:33:21:578:59601578) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-16:33:51:577:59631577) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-16:34:21:577:59661577) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-16:34:41:178:59681178) [DISCONNECT] - Removing mat from active users
+(27/02/2023-16:34:43:033:59683033) [INFO] - BACK UP HISTORY DONE, 0 entries added.
+(27/02/2023-16:49:28:308:60568308) #### ~New Server Start : 27/02/2023-16:49:28:307:60568307####
+(27/02/2023-16:49:28:349:60568349) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-16:49:28:349:60568349) [SETUP] - Loading Users : 
+(27/02/2023-16:49:28:427:60568427) [SETUP] | - line :'' Contains no user:salt:password
+(27/02/2023-16:49:28:463:60568463) [SETUP] | - Loaded : mat
+(27/02/2023-16:49:28:500:60568500) [SETUP] | - Loaded : somebody
+(27/02/2023-16:49:28:536:60568536) [SETUP] | - Loaded : the
+(27/02/2023-16:49:28:572:60568572) [SETUP] | - Loaded : smash_mouth
+(27/02/2023-16:49:28:611:60568611) [SETUP] - HISTORY LOADED (3 lines)
+(27/02/2023-16:49:49:465:60589465) [CONNECT] (mat) - mat
+(27/02/2023-16:49:49:469:60589469) [CONNECT] (mat) - user exists
+(27/02/2023-16:49:49:471:60589471) [CONNECT] (mat) - mat successfully connected.
+(27/02/2023-16:49:55:032:60595032) [INFO] - Message received from <mat>
+    Added to history !
+(27/02/2023-16:49:58:350:60598350) [INFO] - BACK UP LOGFILE DONE, 12 entries added.
+(27/02/2023-16:50:17:127:60617127) [DISCONNECT] - Removing mat from active users
+(27/02/2023-16:50:26:231:60626231) [CONNECT] (mat) - mat
+(27/02/2023-16:50:26:233:60626233) [CONNECT] (mat) - user exists
+(27/02/2023-16:50:26:236:60626236) [CONNECT] (mat) - mat successfully connected.
+(27/02/2023-16:50:28:349:60628349) [INFO] - BACK UP LOGFILE DONE, 5 entries added.
+(27/02/2023-16:50:33:025:60633025) [DISCONNECT] - Removing mat from active users
+(27/02/2023-17:08:43:895:61723895) #### ~New Server Start : 27/02/2023-17:08:43:894:61723894####
+(27/02/2023-17:08:43:906:61723906) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-17:08:43:906:61723906) [SETUP] - Loading Users : 
+(27/02/2023-17:08:43:917:61723917) [SETUP] | - line :'' Contains no user:salt:password
+(27/02/2023-17:08:43:926:61723926) [SETUP] | - Loaded : mat
+(27/02/2023-17:08:43:927:61723927) [SETUP] | - Loaded : somebody
+(27/02/2023-17:08:43:933:61723933) [SETUP] | - Loaded : the
+(27/02/2023-17:08:43:938:61723938) [SETUP] | - Loaded : smash_mouth
+(27/02/2023-17:08:43:940:61723940) [SETUP] - HISTORY LOADED (3 lines)
+(27/02/2023-17:08:51:019:61731019) [DISCONNECT] - Removing  from active users
+(27/02/2023-17:09:06:034:61746034) [CONNECT] (  mat  ) -   mat  
+(27/02/2023-17:09:06:038:61746038) [CONNECT] (  mat  ) - create user
+(27/02/2023-17:09:13:016:61753016) [DISCONNECT] - Removing   mat   from active users
+(27/02/2023-17:09:13:907:61753907) [INFO] - BACK UP LOGFILE DONE, 12 entries added.
+(27/02/2023-17:09:23:113:61763113) [INFO] - BACK UP HISTORY DONE, 0 entries added.
+(27/02/2023-17:12:56:325:61976325) #### ~New Server Start : 27/02/2023-17:12:56:324:61976324####
+(27/02/2023-17:12:56:337:61976337) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-17:12:56:337:61976337) [SETUP] - Loading Users : 
+(27/02/2023-17:12:56:348:61976348) [SETUP] | - line :'' Contains no user:salt:password
+(27/02/2023-17:12:56:354:61976354) [SETUP] | - Loaded : mat
+(27/02/2023-17:12:56:359:61976359) [SETUP] | - Loaded : somebody
+(27/02/2023-17:12:56:361:61976361) [SETUP] | - Loaded : the
+(27/02/2023-17:12:56:370:61976370) [SETUP] | - Loaded : smash_mouth
+(27/02/2023-17:12:56:373:61976373) [SETUP] | - Loaded :   mat  
+(27/02/2023-17:12:56:380:61976380) [SETUP] - HISTORY LOADED (3 lines)
+(27/02/2023-17:13:07:464:61987464) [CONNECT] (mat) - mat
+(27/02/2023-17:13:07:468:61987468) [CONNECT] (mat) - user exists
+(27/02/2023-17:13:07:477:61987477) [CONNECT] (mat) - mat successfully connected.
+(27/02/2023-17:13:17:124:61997124) [CONNECT] (mat) - mat
+(27/02/2023-17:13:17:128:61997128) [CONNECT] (mat) - user already logged in
+(27/02/2023-17:13:17:131:61997131) [DISCONNECT] - Removing  from active users
+(27/02/2023-17:13:26:337:62006337) [INFO] - BACK UP LOGFILE DONE, 15 entries added.
+(27/02/2023-17:13:34:283:62014283) [DISCONNECT] - Removing mat from active users
+(27/02/2023-17:13:56:337:62036337) [INFO] - BACK UP LOGFILE DONE, 2 entries added.
+(27/02/2023-17:14:26:337:62066337) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-17:14:56:336:62096336) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-17:15:26:337:62126337) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-17:15:56:336:62156336) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-17:16:26:336:62186336) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-17:16:49:099:62209099) [CONNECT] (mat) - mat
+(27/02/2023-17:16:49:103:62209103) [CONNECT] (mat) - user exists
+(27/02/2023-17:16:49:110:62209110) [CONNECT] (mat) - mat successfully connected.
+(27/02/2023-17:16:56:337:62216337) [INFO] - BACK UP LOGFILE DONE, 4 entries added.
+(27/02/2023-17:16:57:101:62217101) [CONNECT] (mat) - mat
+(27/02/2023-17:16:57:105:62217105) [CONNECT] (mat) - user already logged in
+(27/02/2023-17:16:57:110:62217110) [DISCONNECT] - Removing  from active users
+(27/02/2023-17:17:26:337:62246337) [INFO] - BACK UP LOGFILE DONE, 4 entries added.
+(27/02/2023-17:22:58:954:62578954) #### ~New Server Start : 27/02/2023-17:22:58:953:62578953####
+(27/02/2023-17:22:58:991:62578991) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-17:22:58:991:62578991) [SETUP] - Loading Users : 
+(27/02/2023-17:22:59:060:62579060) [SETUP] | - line :'' Contains no user:salt:password
+(27/02/2023-17:22:59:097:62579097) [SETUP] | - Loaded : mat
+(27/02/2023-17:22:59:130:62579130) [SETUP] | - Loaded : somebody
+(27/02/2023-17:22:59:164:62579164) [SETUP] | - Loaded : the
+(27/02/2023-17:22:59:197:62579197) [SETUP] | - Loaded : smash_mouth
+(27/02/2023-17:22:59:231:62579231) [SETUP] | - Loaded :   mat  
+(27/02/2023-17:22:59:270:62579270) [SETUP] - HISTORY LOADED (3 lines)
+(27/02/2023-17:23:00:030:62580030) [INFO] - BACK UP HISTORY DONE, 0 entries added.
+(27/02/2023-17:23:21:582:62601582) #### ~New Server Start : 27/02/2023-17:23:21:580:62601580####
+(27/02/2023-17:23:21:587:62601587) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-17:23:21:587:62601587) [SETUP] - Loading Users : 
+(27/02/2023-17:23:21:600:62601600) [SETUP] | - line :'' Contains no user:salt:password
+(27/02/2023-17:23:21:606:62601606) [SETUP] | - Loaded : mat
+(27/02/2023-17:23:21:612:62601612) [SETUP] | - Loaded : somebody
+(27/02/2023-17:23:21:614:62601614) [SETUP] | - Loaded : the
+(27/02/2023-17:23:21:622:62601622) [SETUP] | - Loaded : smash_mouth
+(27/02/2023-17:23:21:624:62601624) [SETUP] | - Loaded :   mat  
+(27/02/2023-17:23:21:630:62601630) [SETUP] - HISTORY LOADED (3 lines)
+(27/02/2023-17:23:51:587:62631587) [INFO] - BACK UP LOGFILE DONE, 9 entries added.
+(27/02/2023-17:24:21:587:62661587) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-17:24:26:961:62666961) [CONNECT] (mat) - mat
+(27/02/2023-17:24:26:964:62666964) [CONNECT] (mat) - user exists
+(27/02/2023-17:24:26:966:62666966) [CONNECT] (mat) - mat successfully connected.
+(27/02/2023-17:24:51:587:62691587) [INFO] - BACK UP LOGFILE DONE, 4 entries added.
+(27/02/2023-17:25:19:058:62719058) [CONNECT] (HUgo) - HUgo
+(27/02/2023-17:25:19:061:62719061) [CONNECT] (HUgo) - create user
+(27/02/2023-17:25:21:586:62721586) [INFO] - BACK UP LOGFILE DONE, 3 entries added.
+(27/02/2023-17:25:41:939:62741939) [INFO] - Message received from <mat>
+    Added to history !
+(27/02/2023-17:25:51:587:62751587) [INFO] - BACK UP LOGFILE DONE, 2 entries added.
+(27/02/2023-17:26:00:402:62760402) [INFO] - Message received from <mat>
+    Added to history !
+(27/02/2023-17:26:10:688:62770688) [INFO] - Message received from <mat>
+    Added to history !
+(27/02/2023-17:26:15:379:62775379) [INFO] - Message received from <mat>
+    Added to history !
+(27/02/2023-17:26:21:587:62781587) [INFO] - BACK UP LOGFILE DONE, 4 entries added.
+(27/02/2023-17:26:51:587:62811587) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-17:27:12:414:62832414) [DISCONNECT] - Removing mat from active users
+(27/02/2023-17:27:18:048:62838048) [INFO] - Message received from <HUgo>
+    Added to history !
+(27/02/2023-17:27:21:586:62841586) [INFO] - BACK UP LOGFILE DONE, 3 entries added.
+(27/02/2023-17:27:21:638:62841638) [INFO] - BACK UP HISTORY DONE, 5 entries added.
+(27/02/2023-17:27:40:820:62860820) [INFO] - BACK UP HISTORY DONE, 0 entries added.
+(27/02/2023-17:29:04:513:62944513) #### ~New Server Start : 27/02/2023-17:29:04:512:62944512####
+(27/02/2023-17:29:04:524:62944524) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-17:29:04:524:62944524) [SETUP] - Loading Users : 
+(27/02/2023-17:29:04:535:62944535) [SETUP] | - line :'' Contains no user:salt:password
+(27/02/2023-17:29:04:539:62944539) [SETUP] | - Loaded : mat
+(27/02/2023-17:29:04:543:62944543) [SETUP] | - Loaded : somebody
+(27/02/2023-17:29:04:547:62944547) [SETUP] | - Loaded : the
+(27/02/2023-17:29:04:555:62944555) [SETUP] | - Loaded : smash_mouth
+(27/02/2023-17:29:04:556:62944556) [SETUP] | - Loaded :   mat  
+(27/02/2023-17:29:04:561:62944561) [SETUP] | - Loaded : HUgo
+(27/02/2023-17:29:04:569:62944569) [SETUP] - HISTORY LOADED (8 lines)
+(27/02/2023-17:29:15:858:62955858) [DISCONNECT] - Removing  from active users
+(27/02/2023-17:29:32:444:62972444) [DISCONNECT] - Removing  from active users
+(27/02/2023-17:29:34:524:62974524) [INFO] - BACK UP LOGFILE DONE, 12 entries added.
+(27/02/2023-17:29:43:076:62983076) [CONNECT] (hugol) - hugol
+(27/02/2023-17:29:43:080:62983080) [CONNECT] (hugol) - create user
+(27/02/2023-17:29:47:207:62987207) [INFO] - Message received from <hugol>
+    Added to history !
+(27/02/2023-17:30:04:115:63004115) [INFO] - Message received from <hugol>
+    Added to history !
+(27/02/2023-17:30:04:274:63004274) [INFO] - Message received from <hugol>
+    Added to history !
+(27/02/2023-17:30:04:434:63004434) [INFO] - Message received from <hugol>
+    Added to history !
+(27/02/2023-17:30:04:525:63004525) [INFO] - BACK UP LOGFILE DONE, 7 entries added.
+(27/02/2023-17:30:04:586:63004586) [INFO] - Message received from <hugol>
+    Added to history !
+(27/02/2023-17:30:04:741:63004741) [INFO] - Message received from <hugol>
+    Added to history !
+(27/02/2023-17:30:04:927:63004927) [INFO] - Message received from <hugol>
+    Added to history !
+(27/02/2023-17:30:05:085:63005085) [INFO] - Message received from <hugol>
+    Added to history !
+(27/02/2023-17:30:05:251:63005251) [INFO] - Message received from <hugol>
+    Added to history !
+(27/02/2023-17:30:05:422:63005422) [INFO] - Message received from <hugol>
+    Added to history !
+(27/02/2023-17:30:05:610:63005610) [INFO] - Message received from <hugol>
+    Added to history !
+(27/02/2023-17:30:05:797:63005797) [INFO] - Message received from <hugol>
+    Added to history !
+(27/02/2023-17:30:05:989:63005989) [INFO] - Message received from <hugol>
+    Added to history !
+(27/02/2023-17:30:06:176:63006176) [INFO] - Message received from <hugol>
+    Added to history !
+(27/02/2023-17:30:06:345:63006345) [INFO] - Message received from <hugol>
+    Added to history !
+(27/02/2023-17:30:06:524:63006524) [INFO] - Message received from <hugol>
+    Added to history !
+(27/02/2023-17:30:06:708:63006708) [INFO] - Message received from <hugol>
+    Added to history !
+(27/02/2023-17:30:06:879:63006879) [INFO] - Message received from <hugol>
+    Added to history !
+(27/02/2023-17:30:07:049:63007049) [INFO] - Message received from <hugol>
+    Added to history !
+(27/02/2023-17:30:07:229:63007229) [INFO] - Message received from <hugol>
+    Added to history !
+(27/02/2023-17:30:07:391:63007391) [INFO] - Message received from <hugol>
+    Added to history !
+(27/02/2023-17:30:07:558:63007558) [INFO] - Message received from <hugol>
+    Added to history !
+(27/02/2023-17:30:07:704:63007704) [INFO] - Message received from <hugol>
+    Added to history !
+(27/02/2023-17:30:07:874:63007874) [INFO] - Message received from <hugol>
+    Added to history !
+(27/02/2023-17:30:11:851:63011851) [INFO] - Message received from <hugol>
+    Added to history !
+(27/02/2023-17:30:28:151:63028151) [CONNECT] (mat) - mat
+(27/02/2023-17:30:28:156:63028156) [CONNECT] (mat) - user exists
+(27/02/2023-17:30:28:158:63028158) [CONNECT] (mat) - mat successfully connected.
+(27/02/2023-17:30:34:524:63034524) [INFO] - BACK UP LOGFILE DONE, 25 entries added.
+(27/02/2023-17:30:39:803:63039803) [INFO] - Message received from <hugol>
+    Added to history !
+(27/02/2023-17:30:51:524:63051524) [INFO] - Message received from <mat>
+    Added to history !
+(27/02/2023-17:30:54:260:63054260) [INFO] - Message received from <hugol>
+    Added to history !
+(27/02/2023-17:31:04:524:63064524) [INFO] - BACK UP LOGFILE DONE, 4 entries added.
+(27/02/2023-17:31:04:578:63064578) [INFO] - BACK UP HISTORY DONE, 28 entries added.
+(27/02/2023-17:31:05:852:63065852) [INFO] - Message received from <mat>
+    Added to history !
+(27/02/2023-17:31:09:709:63069709) [INFO] - Message received from <hugol>
+    Added to history !
+(27/02/2023-17:31:28:098:63088098) [INFO] - BACK UP HISTORY DONE, 2 entries added.
+(27/02/2023-17:36:27:658:63387658) #### ~New Server Start : 27/02/2023-17:36:27:657:63387657####
+(27/02/2023-17:36:27:699:63387699) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-17:36:27:699:63387699) [SETUP] - Loading Users : 
+(27/02/2023-17:36:27:769:63387769) [SETUP] | - line :'' Contains no user:salt:password
+(27/02/2023-17:36:27:809:63387809) [SETUP] | - Loaded : mat
+(27/02/2023-17:36:27:844:63387844) [SETUP] | - Loaded : somebody
+(27/02/2023-17:36:27:876:63387876) [SETUP] | - Loaded : the
+(27/02/2023-17:36:27:909:63387909) [SETUP] | - Loaded : smash_mouth
+(27/02/2023-17:36:27:941:63387941) [SETUP] | - Loaded :   mat  
+(27/02/2023-17:36:27:974:63387974) [SETUP] | - Loaded : HUgo
+(27/02/2023-17:36:28:005:63388005) [SETUP] | - Loaded : hugol
+(27/02/2023-17:36:28:039:63388039) [SETUP] - HISTORY LOADED (38 lines)
+(27/02/2023-17:36:39:982:63399982) [CONNECT] (mat) - mat
+(27/02/2023-17:36:39:985:63399985) [CONNECT] (mat) - user exists
+(27/02/2023-17:36:39:988:63399988) [CONNECT] (mat) - mat successfully connected.
+(27/02/2023-17:36:52:328:63412328) [INFO] - BACK UP HISTORY DONE, 0 entries added.
+(27/02/2023-17:39:37:130:63577130) #### ~New Server Start : 27/02/2023-17:39:37:129:63577129####
+(27/02/2023-17:39:37:168:63577168) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-17:39:37:168:63577168) [SETUP] - Loading Users : 
+(27/02/2023-17:39:37:253:63577253) [SETUP] | - line :'' Contains no user:salt:password
+(27/02/2023-17:39:37:291:63577291) [SETUP] | - Loaded : mat
+(27/02/2023-17:39:37:330:63577330) [SETUP] | - Loaded : somebody
+(27/02/2023-17:39:37:366:63577366) [SETUP] | - Loaded : the
+(27/02/2023-17:39:37:410:63577410) [SETUP] | - Loaded : smash_mouth
+(27/02/2023-17:39:37:442:63577442) [SETUP] | - Loaded :   mat  
+(27/02/2023-17:39:37:476:63577476) [SETUP] | - Loaded : HUgo
+(27/02/2023-17:39:37:509:63577509) [SETUP] | - Loaded : hugol
+(27/02/2023-17:39:37:544:63577544) [SETUP] - HISTORY LOADED (0 lines)
+(27/02/2023-17:40:07:169:63607169) [INFO] - BACK UP LOGFILE DONE, 11 entries added.
+(27/02/2023-17:40:21:018:63621018) [CONNECT] (matvei) - matvei
+(27/02/2023-17:40:21:051:63621051) [CONNECT] (matvei) - create user
+(27/02/2023-17:40:37:169:63637169) [INFO] - BACK UP LOGFILE DONE, 3 entries added.
+(27/02/2023-17:41:07:168:63667168) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-17:41:37:168:63697168) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-17:42:05:512:63725512) [INFO] - Message received from <matvei>
+    Added to history !
+(27/02/2023-17:42:07:168:63727168) [INFO] - BACK UP LOGFILE DONE, 2 entries added.
+(27/02/2023-17:42:11:022:63731022) [INFO] - Message received from <matvei>
+    Added to history !
+(27/02/2023-17:42:31:497:63751497) [CONNECT] (kekeld) - kekeld
+(27/02/2023-17:42:31:501:63751501) [CONNECT] (kekeld) - create user
+(27/02/2023-17:44:04:141:63844141) #### ~New Server Start : 27/02/2023-17:44:04:140:63844140####
+(27/02/2023-17:44:04:177:63844177) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(27/02/2023-17:44:04:177:63844177) [SETUP] - Loading Users : 
+(27/02/2023-17:44:04:258:63844258) [SETUP] | - line :'' Contains no user:salt:password
+(27/02/2023-17:44:04:296:63844296) [SETUP] | - Loaded : mat
+(27/02/2023-17:44:04:327:63844327) [SETUP] | - Loaded : somebody
+(27/02/2023-17:44:04:361:63844361) [SETUP] | - Loaded : the
+(27/02/2023-17:44:04:392:63844392) [SETUP] | - Loaded : smash_mouth
+(27/02/2023-17:44:04:425:63844425) [SETUP] | - Loaded :   mat  
+(27/02/2023-17:44:04:458:63844458) [SETUP] | - Loaded : HUgo
+(27/02/2023-17:44:04:489:63844489) [SETUP] | - Loaded : hugol
+(27/02/2023-17:44:04:522:63844522) [SETUP] | - Loaded : matvei
+(27/02/2023-17:44:04:561:63844561) [SETUP] | - Loaded : kekeld
+(27/02/2023-17:44:04:597:63844597) [SETUP] - HISTORY LOADED (0 lines)
+(27/02/2023-17:44:26:779:63866779) [INFO] - BACK UP HISTORY DONE, 0 entries added.
+(28/02/2023-18:20:40:196:66040196) #### ~New Server Start : 28/02/2023-18:20:40:194:66040194####
+(28/02/2023-18:20:40:213:66040213) [INFO] - BACK UP LOGFILE DONE, 1 entries added.
+(28/02/2023-18:20:40:213:66040213) [SETUP] - Loading Users : 
+(28/02/2023-18:20:40:222:66040222) [SETUP] | - line :'' Contains no user:salt:password
+(28/02/2023-18:20:40:227:66040227) [SETUP] | - Loaded : mat
+(28/02/2023-18:20:40:287:66040287) [SETUP] | - Loaded : somebody
+(28/02/2023-18:20:40:334:66040334) [SETUP] | - Loaded : the
+(28/02/2023-18:20:40:387:66040387) [SETUP] | - Loaded : smash_mouth
+(28/02/2023-18:20:40:428:66040428) [SETUP] | - Loaded :   mat  
+(28/02/2023-18:20:40:474:66040474) [SETUP] | - Loaded : HUgo
+(28/02/2023-18:20:40:515:66040515) [SETUP] | - Loaded : hugol
+(28/02/2023-18:20:40:561:66040561) [SETUP] | - Loaded : matvei
+(28/02/2023-18:20:40:603:66040603) [SETUP] | - Loaded : kekeld
+(28/02/2023-18:20:40:639:66040639) [SETUP] - HISTORY LOADED (0 lines)
+(28/02/2023-18:20:55:174:66055174) [CONNECT] (clarisse) - clarisse
+(28/02/2023-18:20:55:179:66055179) [CONNECT] (clarisse) - create user
+(28/02/2023-18:21:10:213:66070213) [INFO] - BACK UP LOGFILE DONE, 15 entries added.
+(28/02/2023-18:21:13:592:66073592) [CONNECT] (mat) - mat
+(28/02/2023-18:21:13:599:66073599) [CONNECT] (mat) - user exists
+(28/02/2023-18:21:13:606:66073606) [CONNECT] (mat) - mat successfully connected.
+(28/02/2023-18:21:17:371:66077371) [INFO] - Message received from <mat>
+    Added to history !
+(28/02/2023-18:21:28:936:66088936) [INFO] - Message received from <mat>
+    Added to history !
+(28/02/2023-18:21:32:894:66092894) [INFO] - Message received from <clarisse>
+    Added to history !
+(28/02/2023-18:21:40:213:66100213) [INFO] - BACK UP LOGFILE DONE, 7 entries added.
+(28/02/2023-18:21:57:172:66117172) [DISCONNECT] - Removing mat from active users
+(28/02/2023-18:21:58:823:66118823) [INFO] - BACK UP HISTORY DONE, 3 entries added.
