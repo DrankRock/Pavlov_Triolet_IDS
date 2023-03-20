@@ -7,7 +7,7 @@ import com.rabbitmq.client.DeliverCallback;
 
 import java.nio.charset.StandardCharsets;
 
-public class Client {
+public class Producer {
 
     private final static String QUEUE_NAME = "client";
 
