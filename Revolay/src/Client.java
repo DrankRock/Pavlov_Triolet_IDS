@@ -16,7 +16,6 @@ import java.util.concurrent.TimeoutException;
  * @author Hugo Triolet
  */
 public abstract class Client {
-    public final Controller controller;
     public ConnectionFactory factory;
     public Connection connection;
     public final String PING_NAME;
@@ -30,7 +29,6 @@ public abstract class Client {
      * @throws TimeoutException in case of exception with setupFactory
      */
     public Client(String mode) throws IOException, TimeoutException {
-        controller = new Controller(this, mode);
         PING_NAME = "ping";
         PONG_NAME = "pong";
         setupFactory();

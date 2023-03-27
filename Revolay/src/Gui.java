@@ -43,8 +43,6 @@ public class Gui extends JFrame {
         getContentPane().setBackground(baseColor);
 
         JButton pingButton = new JButton("PING");
-        pingButton.addActionListener(e -> this.controller.handlePress(this.currentColor));
-
         changeColorButton = new JButton("choose color");
         changeColorButton.addActionListener(e -> this.choseColor());
         changeColorButton.setBackground(currentColor);

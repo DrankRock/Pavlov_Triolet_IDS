@@ -7,39 +7,43 @@ import java.awt.*;
  * @author Hugo Triolet
  */
 public class Controller {
-    Client client;
-    Gui gui;
-
-    /**
-     * Constructor of a Controller
-     * @param c the Client (consumer or producer)
-     * @param mode The mode (consumer or producer)
-     */
-    public Controller(Client c, String mode){
-        client = c;
-        gui = new Gui(this, mode);
+    private NumberDisplay gui;
+    private Model mdl;
+    private int number;
+    private int next;
+    private int prec;
+    private int totalWindows;
+    public Controller(int number, int totalWindows){
+        this.number = number;
+        this.totalWindows = totalWindows;
+        prec = (number-1+totalWindows)%totalWindows;
+        next = (number+1)%totalWindows;
     }
 
-    /**
-     * If producer GUI clicks on Ping, client is a producer and must send a ping
-     * @param c the color to be sent with the ping
-     */
-    public void handlePress(Color c){
-        client.sendPing(c);
+    public void init(Model model){
+        gui = new NumberDisplay(
+                number, new Color(
+                        (int) (Math.random() * 255),
+                        (int) (Math.random() * 255),
+                        (int) (Math.random() * 255)
+                ),
+                totalWindows,
+                this
+        );
+        mdl = model;
     }
 
-    /**
-     * Set the color of the background, called by the consumer in case of pinf received
-     * @param c
-     */
-    public void setColor(Color c){
-        gui.changeColor(c);
+
+    public void sendRight(){
+        System.out.println("Action handled, sending ping to " + next);
+        mdl.ping(number, next);
     }
 
-    /**
-     * Called when Producer receives a Pong
-     */
-    public void pong(){
-        gui.pong();
+    public void sendLeft(){
+        mdl.ping(number, prec);
+    }
+
+    public void ping(){
+        gui.flicker();
     }
 }
