@@ -20,6 +20,7 @@ import java.util.concurrent.TimeoutException;
  */
 public class PhysicalNode {
     private int value;
+    private int numberOfElements;
     private ArrayList<Integer> connectedTo;
     private ConnectionFactory factory;
     private Connection connection;
@@ -28,6 +29,19 @@ public class PhysicalNode {
 
     public PhysicalNode(int value, ArrayList<Integer> connectedTo) {
         this.value = value;
+        //System.out.println("Created physicalNode "+this.value+" connected to "+ Arrays.toString(connectedTo.toArray()));
+        this.connectedTo = connectedTo;
+        try {
+            this.setupFactory();
+        } catch (IOException | TimeoutException e) {
+            throw new RuntimeException(e);
+        }
+        this.directionOf = new HashMap<>();
+    }
+
+    public PhysicalNode(int value, ArrayList<Integer> connectedTo, int numberOfElements) {
+        this.value = value;
+        this.numberOfElements = numberOfElements;
         //System.out.println("Created physicalNode "+this.value+" connected to "+ Arrays.toString(connectedTo.toArray()));
         this.connectedTo = connectedTo;
         try {
@@ -113,4 +127,5 @@ public class PhysicalNode {
     public void addDirection(int to, int next){
         directionOf.put(to, next);
     }
+
 }

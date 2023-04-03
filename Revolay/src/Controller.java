@@ -7,7 +7,7 @@ import java.awt.*;
  * @author Hugo Triolet
  */
 public class Controller {
-    private NumberDisplay gui;
+    private View gui;
     private Model mdl;
     private int number;
     private int next;
@@ -21,7 +21,7 @@ public class Controller {
     }
 
     public void init(Model model){
-        gui = new NumberDisplay(
+        gui = new View(
                 number, new Color(
                         (int) (Math.random() * 255),
                         (int) (Math.random() * 255),

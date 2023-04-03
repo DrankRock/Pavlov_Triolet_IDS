@@ -22,7 +22,7 @@ public class PhysicalNetwork {
                     System.out.print(v);
                     pn.addConnection(j);
                 } else {
-                    System.out.print(" ");
+                    System.out.print(".");
                 }
             }
             System.out.println();
@@ -48,7 +48,10 @@ public class PhysicalNetwork {
         visited.add(from);
 
         while (! notVisited.isEmpty()){
-            System.out.println(notVisited.pop());
+            int current = notVisited.pop();
+
+
+            System.out.println();
         }
 
 

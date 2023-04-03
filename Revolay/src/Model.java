@@ -11,6 +11,7 @@ public class Model {
     public Model(int totalWindows){
         this.totalWindows = totalWindows;
         controllers = new ArrayList<>();
+        init();
     }
 
     public void init(){
@@ -26,7 +27,7 @@ public class Model {
     }
 
     public static void main(String[] args) {
-        Model model = new Model(10);
+        Model model = new Model(20);
         // model.init();
         int[][] arr = {
                 {0, 0, 1, 0, 0},
