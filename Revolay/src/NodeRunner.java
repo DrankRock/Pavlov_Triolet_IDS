@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 /**
  * @author Matvei Pavlov
+ *
+ * Run a node by creating its physical version, and processing the sending of messages
  */
 public class NodeRunner {
     int value;
@@ -24,6 +26,10 @@ public class NodeRunner {
             }
         }
     }
+
+    /**
+     * Initialize the NodeRunner by creating its physical node,adding its directions, and launching the gui.
+     */
     public void init(){
         pn = new PhysicalNode(value, connectedTo, numberOfElements);
         for (String s : routing){
@@ -33,16 +39,15 @@ public class NodeRunner {
         NodeGUI gui = new NodeGUI(Color.GRAY, value, numberOfElements, this);
     }
 
+    /**
+     * Send a ping to the Physical Node of id dest
+     * @param dest the id of the destination
+     */
     public void ping(int dest){
         try {
-            System.out.println("Bug !");
             pn.sendMessage(new Message(value, dest, "Ping"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public static void main(String[] args){
-
     }
 }
