@@ -22,13 +22,13 @@ public class NodeGUI extends JFrame {
         int cont = 0;
         for (int i = 0; i<numberOfElements; i++){
             if (i != value){
-                nodes[cont] = ""+i;
+                nodes[cont] = String.valueOf(i);
                 cont ++ ;
             }
         }
         JComboBox<String> destComboBox = new JComboBox<>(nodes);
         destComboBox.setPreferredSize(new Dimension(30, 0));
-        setTitle("Node " + value);
+        setTitle("Physical Node " + value);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
