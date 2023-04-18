@@ -36,7 +36,7 @@ public class Model {
                 {0, 1, 0, 0, 0},
                 {0, 1, 0, 0, 0}
         };
-        PhysicalNetwork pn = new PhysicalNetwork(arr);
+        PhysicalNetwork pn = new PhysicalNetwork(arr, 5);
         int node0 = 0;
         int node1 = 1;
         int node2 = 2;
