@@ -26,6 +26,7 @@ public class PhysicalNode {
     private Connection connection;
     private Channel channel;
     private HashMap<Integer,Integer> directionOf;
+    private NodeRunner caller;
 
     public PhysicalNode(int value, ArrayList<Integer> connectedTo) {
         this.value = value;
@@ -39,7 +40,7 @@ public class PhysicalNode {
         this.directionOf = new HashMap<>();
     }
 
-    public PhysicalNode(int value, ArrayList<Integer> connectedTo, int numberOfElements) {
+    public PhysicalNode(int value, ArrayList<Integer> connectedTo, int numberOfElements, NodeRunner caller) {
         this.value = value;
         this.numberOfElements = numberOfElements;
         //System.out.println("Created physicalNode "+this.value+" connected to "+ Arrays.toString(connectedTo.toArray()));
@@ -50,6 +51,7 @@ public class PhysicalNode {
             throw new RuntimeException(e);
         }
         this.directionOf = new HashMap<>();
+        this.caller = caller;
     }
 
     /**
@@ -109,7 +111,7 @@ public class PhysicalNode {
                 Message msg = Message.fromBytes(delivery.getBody());
                 if (msg.getTo() == value){
                     System.out.println("["+this.value+"]"+"[RECV] - Destination reached, from : "+msg.getFrom()+", to : "+msg.getTo()+"\nmessage : "+msg.getMessage());
-
+                    caller.received(msg);
                 } else {
                     this.sendMessage(msg);
                 }

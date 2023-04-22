@@ -35,6 +35,7 @@ public class Gui extends JFrame {
         this.currentColor = Color.blue;
         setTitle(mode);
         setSize(400, 400);
+        this.setAlwaysOnTop(true);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -148,7 +149,7 @@ public class Gui extends JFrame {
             getContentPane().setBackground(Color.green);
             this.pingLabel.setText(text);
             try {
-                Thread  .sleep(200);
+                Thread  .sleep(400);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

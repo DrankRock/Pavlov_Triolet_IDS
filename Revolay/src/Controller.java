@@ -8,7 +8,7 @@ import java.awt.*;
  */
 public class Controller {
     private View gui;
-    private Model mdl;
+    private SingleNode mdl;
     private int number;
     private int next;
     private int prec;
@@ -20,7 +20,7 @@ public class Controller {
         next = (number+1)%totalWindows;
     }
 
-    public void init(Model model){
+    public void init(SingleNode model){
         gui = new View(
                 number, new Color(
                         (int) (Math.random() * 255),
@@ -35,12 +35,11 @@ public class Controller {
 
 
     public void sendRight(){
-        System.out.println("Action handled, sending ping to " + next);
-        mdl.ping(number, next);
+        mdl.sendMessage(next);
     }
 
     public void sendLeft(){
-        mdl.ping(number, prec);
+        mdl.sendMessage(prec);
     }
 
     public void ping(){
