@@ -12,6 +12,10 @@ public class SingleNode {
     private Controller ctrl;
     private NodeRunner physicalNode;
 
+    /**
+     * Constructor of the SingleNode
+     * @param args the command line arguments of the Main
+     */
     public SingleNode(String[] args){
         physicalNode = new NodeRunner(args); // physical node launching
         this.currentWindow = physicalNode.getValue();
@@ -19,16 +23,28 @@ public class SingleNode {
         ctrl = new Controller(currentWindow, totalWindows); // virtual node launching
     }
 
+    /**
+     * Initializes the content of the physicical and virtual nodes.
+     * The execution of this class is mandatory for a correct running of the software.
+     */
     public void init(){
         ctrl.init(this);
         physicalNode.init(this);
     }
 
+    /**
+     * Called when the Physical node received a message that was meant to himself.
+     * @param msg the message
+     */
     public void receivedMessage(Message msg){
         System.out.println("Node "+currentWindow+" received message : "+msg.getMessage());
         ctrl.ping();
     }
 
+    /**
+     * Called when the Virtual node gui asks to send a ping to a destination
+     * @param dest the value of the destination node
+     */
     public void sendMessage(int dest){
         this.physicalNode.ping(dest);
     }
