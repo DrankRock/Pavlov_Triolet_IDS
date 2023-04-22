@@ -1,4 +1,5 @@
 /**
+ * Main class used as a Wrapper for SingleNode, for the clarity of the execution
  * @author Matvei Pavlov
  */
 public class Main {

@@ -1,7 +1,4 @@
-import com.rabbitmq.client.ConnectionFactory;
-import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.DeliverCallback;
+import com.rabbitmq.client.*;
 
 
 import java.awt.*;
@@ -80,6 +77,9 @@ public class PhysicalNode {
                 }
             } catch (ClassNotFoundException e) {
                 throw new RuntimeException(e);
+            } catch (AlreadyClosedException e){
+                System.out.println("Error : AlreadyClosedException with node "+this.value+" on message received .");
+                e.printStackTrace();
             }
         };
         channel.basicConsume(channelName, true, deliverCallback, consumerTag -> { });
@@ -93,19 +93,24 @@ public class PhysicalNode {
      */
     public void sendMessage(Message msg) throws IOException {
         int to = msg.getTo();
-        for (int directConnection : connectedTo){
-            if (directConnection == to){
-                System.out.println("["+this.value+"]"+"Sending '"+msg+" -- Direct link");
-                channel.basicPublish("", "To_"+to, null, msg.toBytes());
-                return;
+        try {
+            for (int directConnection : connectedTo) {
+                if (directConnection == to) {
+                    System.out.println("[" + this.value + "]" + "Sending '" + msg + " -- Direct link");
+                    channel.basicPublish("", "To_" + to, null, msg.toBytes());
+                    return;
+                }
             }
-        }
-        if (directionOf.containsKey(to)){
-            int direction = directionOf.get(to);
-            System.out.println("["+this.value+"]"+"Sending '"+msg+" -- Passing by "+this.value+" -- direction : "+direction);
-            channel.basicPublish("", "To_"+direction, null, msg.toBytes());
-        } else {
-            throw new RuntimeException("Exception caught : no path was found to reach "+msg.getTo()+" from "+value+".\n");
+            if (directionOf.containsKey(to)) {
+                int direction = directionOf.get(to);
+                System.out.println("[" + this.value + "]" + "Sending '" + msg + " -- Passing by " + this.value + " -- direction : " + direction);
+                channel.basicPublish("", "To_" + direction, null, msg.toBytes());
+            } else {
+                throw new RuntimeException("Exception caught : no path was found to reach " + msg.getTo() + " from " + value + ".\n");
+            }
+        } catch (AlreadyClosedException e){
+            System.out.println("Error : AlreadyClosedException with node "+this.value+" on message sent .");
+            e.printStackTrace();
         }
     }
 
