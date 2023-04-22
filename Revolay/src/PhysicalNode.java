@@ -52,6 +52,10 @@ public class PhysicalNode {
         this.directionOf = new HashMap<>();
     }
 
+    /**
+     * Create a new physical node with only its
+     * @param value
+     */
     public PhysicalNode(int value) {
         this.value = value;
         this.connectedTo = new ArrayList<>();
@@ -64,6 +68,10 @@ public class PhysicalNode {
         this.directionOf = new HashMap<>();
     }
 
+    /**
+     * Add a node connected to this one
+     * @param node the id of the neighbor
+     */
     public void addConnection(int node){
         connectedTo.add(node);
     }
@@ -89,6 +97,11 @@ public class PhysicalNode {
         setupRec("To_"+value);
     }
 
+    /**
+     * Setup the receiving of messages
+     * @param channelName the name of the channel to which other nodes can send a message
+     * @throws IOException
+     */
     private void setupRec(String channelName) throws IOException {
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             try {
@@ -106,6 +119,11 @@ public class PhysicalNode {
     }
 
 
+    /**
+     * Send a message to another node
+     * @param msg Message containing the destinator and the message
+     * @throws IOException in case of issues with basicPublish
+     */
     public void sendMessage(Message msg) throws IOException {
         int to = msg.getTo();
         for (int directConnection : connectedTo){
@@ -124,6 +142,11 @@ public class PhysicalNode {
         }
     }
 
+    /**
+     * Add a direction to 'to', passing by 'next'.
+     * @param to the target
+     * @param next the node to go to as a next step
+     */
     public void addDirection(int to, int next){
         directionOf.put(to, next);
     }

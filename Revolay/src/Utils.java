@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * @author Matvei Pavlov
@@ -20,4 +22,63 @@ public final class Utils {
         return getLuminance(c) <= 127.5;
     }
 
+    /**
+     * Bellman Ford Algoritm's implementation to find the shortest path to all the nodes of a graphe
+     * @param from the starting node
+     * @param inputGraph the graphe as an array
+     * @return the predecessors of each node
+     */
+    static public int[] Bellman_Ford(int from, int[][] inputGraph){
+
+        int size = inputGraph.length;
+        int[] distances = new int[size];
+        int[] predecessors=  new int[size];
+
+        Arrays.fill(distances, Integer.MAX_VALUE - 5);
+        Arrays.fill(predecessors, -1); //assuming that the label of each node is an natural integer
+        distances[from] = 0;
+
+        // Main loop
+        for(int k = 1; k < size; k++){
+            for(int u = 0; u < size ; u++){
+                for(int v = 0; v < size; v++){
+                    if(inputGraph[u][v] != 0){
+                        if(distances[u] + 1 < distances[v]){
+                            distances[v] = distances[u] + 1;
+                            // predecessor according to the starting node
+                            predecessors[v] = u;
+                        }
+                    }
+                }
+            }
+        }
+
+        // System.out.println("["+from+"] distances : " + Arrays.toString(distances));
+        // System.out.println("["+from+"] predecessors : " + Arrays.toString(predecessors));
+        return predecessors;
+    }
+
+    /**
+     * Convert a predecessor array to a directions array, to have, for each node, the direction the from
+     * node has to ping to access this node
+     * @param predecessors the list of predecessors from the bellman ford
+     * @param from the starting node
+     * @return the directions array
+     */
+    public static int[] predToDirection(int[] predecessors, int from){
+        int[] directions = predecessors.clone();
+        for(int i=0; i< predecessors.length; i++){
+            // don't check direction of node to himself
+            if (i != from ) {
+                int current = i;
+                int previous = predecessors[current];
+                while (previous != from){
+                    current = previous ;
+                    previous = predecessors[current];
+                }
+                directions[i] = current;
+            }
+        }
+        return directions;
+    }
 }

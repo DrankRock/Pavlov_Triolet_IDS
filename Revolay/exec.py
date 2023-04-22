@@ -1,11 +1,13 @@
 import argparse
 import subprocess
 
+
+# External libraries
 slf4j = "jars/slf4j-api-1.7.36.jar"
 slf4j_simple = "jars/slf4j-simple-1.7.36.jar"
 amqp = "jars/amqp-client-5.16.0.jar"
 
-
+# Arguments parsing
 def args():
     parser = argparse.ArgumentParser(description='Generation de noeuds')
     parser.add_argument(
@@ -20,11 +22,40 @@ def args():
 
 commands = {}
 args = args()
+# Using Bellman Ford :
 with open(args.input[0], 'r') as graph_file:
     lines = [line.strip() for line in graph_file.readlines() if line.strip()]
     number = 0
     n_elements = len(lines[0].split(" "))
-    print(n_elements)
+    # print(n_elements)
+    for line in lines :
+        nodes = line.split(" ")
+        connected = []
+        for j in range(len(nodes)):
+            if nodes[j] == '1' and j != number:
+                connected.append("{}".format(j))
+        print("{} connected to : {}".format(number, connected));
+        commands[int(number)] = [
+                "java", 
+                "-cp", 
+                ".:{}:{}:{}:src/".format(amqp, slf4j, slf4j_simple), 
+                "src/Main.java", 
+                "{}".format(args.input[0]),
+                "{}".format(connected),
+                "{}".format(number)
+            ]
+        number += 1
+
+for cmd in commands.values() :
+    subprocess.Popen(cmd) 
+
+# Not using Bellman Ford :
+'''
+with open(args.input[0], 'r') as graph_file:
+    lines = [line.strip() for line in graph_file.readlines() if line.strip()]
+    number = 0
+    n_elements = len(lines[0].split(" "))
+    # print(n_elements)
     for line in lines :
         if number >= n_elements :
             # these lines concern path
@@ -50,7 +81,7 @@ with open(args.input[0], 'r') as graph_file:
 
 for cmd in commands.values() :
     subprocess.Popen(cmd) 
-
+'''
 '''
 # single node
 # syntax : bash exec.sh single nElements currentElementNumber <connected 1> <...>
