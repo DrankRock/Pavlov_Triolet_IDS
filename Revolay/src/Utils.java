@@ -1,19 +1,28 @@
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
+ * Utility methods working just fine as static methods
  * @author Matvei Pavlov
  */
 public final class Utils {
+    /**
+     * Get the luminance of a color
+     * @param c the color
+     * @return the luminance as a double
+     */
     static public double getLuminance(Color c){
         //  (0.2126*R + 0.7152*G + 0.0722*B)
         return 0.2125*c.getRed() + 0.7152*c.getGreen() + 0.0722*c.getBlue();
 
     }
 
+    /**
+     * Determines objectively if a color is bright rather than dark
+     * @param c the color
+     * @return true if the color is bright
+     */
     static public boolean isBright(Color c){
-        //  (0.2126*R + 0.7152*G + 0.0722*B)
         return getLuminance(c) > 127.5;
     }
 
@@ -48,8 +57,6 @@ public final class Utils {
             }
         }
 
-        // System.out.println("["+from+"] distances : " + Arrays.toString(distances));
-        // System.out.println("["+from+"] predecessors : " + Arrays.toString(predecessors));
         return predecessors;
     }
 
