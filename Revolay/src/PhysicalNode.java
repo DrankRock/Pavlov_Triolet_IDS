@@ -68,6 +68,7 @@ public class PhysicalNode {
         this.directionOf = new HashMap<>();
     }
 
+
     /**
      * Add a node connected to this one
      * @param node the id of the neighbor
@@ -108,6 +109,7 @@ public class PhysicalNode {
                 Message msg = Message.fromBytes(delivery.getBody());
                 if (msg.getTo() == value){
                     System.out.println("["+this.value+"]"+"[RECV] - Destination reached, from : "+msg.getFrom()+", to : "+msg.getTo()+"\nmessage : "+msg.getMessage());
+
                 } else {
                     this.sendMessage(msg);
                 }
