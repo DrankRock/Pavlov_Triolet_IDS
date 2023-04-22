@@ -12,13 +12,34 @@ import java.awt.geom.Ellipse2D;
  * @author Matvei Pavlov
  */
 public class VirtualNodeGUI extends JFrame {
+    /**
+     * The background color
+     */
     private Color backgroundColor;
-
+    /**
+     * The button to send a ping to the previous node
+     */
     private JButton leftButton;
+    /**
+     * The button to send a ping to the next node
+     */
     private JButton rightButton;
+    /**
+     * This node's number
+     */
     private int number;
+    /**
+     * The caller of this class
+     */
     private Controller thisController;
+    /**
+     * A subjectively good button width
+     */
     private final int buttonWidth = 30;
+    /**
+     * The panel containing the number of the node that is supposed to suit the size of the panel, but doens't work
+     * super well because of the circle
+     */
     private JPanel numberPanel;
 
     /**
@@ -32,6 +53,7 @@ public class VirtualNodeGUI extends JFrame {
     public VirtualNodeGUI(int number, Color backgroundColor, int totalWindows, Controller thisController) {
         this.number = number;
         this.backgroundColor = backgroundColor;
+        this.thisController = thisController;
 
         setTitle("Node " + number);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

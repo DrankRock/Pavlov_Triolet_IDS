@@ -2,13 +2,21 @@ import java.io.*;
 import java.util.logging.Logger;
 
 /**
- * @author Matvei Pavlov
- *
  * Message class containing the origin, the destination, and the message
+ * @author Matvei Pavlov
  */
 public class Message implements Serializable{
+    /**
+     * This is the sender of the message
+     */
     private int from;
+    /**
+     * This is the destination node of the message
+     */
     private int to;
+    /**
+     * this is the String message sent.
+     */
     private String message;
 
     /**
@@ -22,27 +30,56 @@ public class Message implements Serializable{
         this.to = to;
         this.message = message;
     }
-
+    /**
+     * Gets the from integer value, the sender of the message
+     *
+     * @return The sender's value
+     */
     public int getFrom() {
         return from;
     }
 
+    /**
+     * Sets the from integer value, the sender of the message
+     *
+     * @param from The new from integer value.
+     */
     public void setFrom(int from) {
         this.from = from;
     }
 
+    /**
+     * Gets the to integer value, the destination node's value
+     *
+     * @return The to integer value.
+     */
     public int getTo() {
         return to;
     }
 
+    /**
+     * Sets the to integer value,  the destination node's value.
+     *
+     * @param to The new to integer value.
+     */
     public void setTo(int to) {
         this.to = to;
     }
 
+    /**
+     * Gets the message string value.
+     *
+     * @return The message string value.
+     */
     public String getMessage() {
         return message;
     }
 
+    /**
+     * Sets the message string value.
+     *
+     * @param message The new message string value.
+     */
     public void setMessage(String message) {
         this.message = message;
     }

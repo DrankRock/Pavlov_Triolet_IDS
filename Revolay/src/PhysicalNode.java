@@ -11,18 +11,43 @@ import java.util.Map;
 import java.util.concurrent.TimeoutException;
 
 /**
- * @author Matvei Pavlov
  * Physical Node, connecting to its peers with RabbitMQ, sending messages to its neighbors.
  * This has the objective of being a representation of a physical node on a single process.
+ * @author Matvei Pavlov
+ *
  */
 public class PhysicalNode {
+    /**
+     * The value of the node
+     */
     private int value;
+    /**
+     * The total number of nodes
+     */
     private int numberOfElements;
+    /**
+     * The neighbors of the node
+     */
     private ArrayList<Integer> connectedTo;
+    /**
+     * Variable used with RabbitMq for connectivity purpose
+     */
     private ConnectionFactory factory;
+    /**
+     * Variable used with RabbitMq for connectivity purpose
+     */
     private Connection connection;
+    /**
+     * The channel to receive messages sent to this node
+     */
     private Channel channel;
+    /**
+     * The direction in which the message needs to be sent to reach the final destination the fastest.
+     */
     private HashMap<Integer,Integer> directionOf;
+    /**
+     * The caller of this class
+     */
     private NodeRunner caller;
 
     /**

@@ -10,11 +10,29 @@ import java.awt.*;
  * @author Hugo Triolet
  */
 public class Controller {
+    /**
+     * The gui of the virtual node
+     */
     private VirtualNodeGUI gui;
+    /**
+     * The caller of this controller
+     */
     private SingleNode mdl;
+    /**
+     * The value of the node
+     */
     private int number;
+    /**
+     * The next node's value in nodes number
+     */
     private int next;
+    /**
+     * The precedent node's value in nodes number
+     */
     private int prec;
+    /**
+     * The total number of nodes (thus of windows) that needs to be opened.
+     */
     private int totalWindows;
 
     /**

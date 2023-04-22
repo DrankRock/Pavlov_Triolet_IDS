@@ -8,10 +8,25 @@ import java.awt.*;
  * @author Matvei Pavlov
  */
 public class PhysicalNodeGUI extends JFrame {
+    /**
+     * This is the back panel containing a color and a number that fits it.
+     */
     private NumberPanel numberPanel;
+    /**
+     * This is the background color of the panel
+     */
     private Color backgroundColor;
+    /**
+     * This is the node's value.
+     */
     private int value;
+    /**
+     * This is the total number of nodes.
+     */
     private int numberOfElements;
+    /**
+     * This is the caller class of the gui.
+     */
     private NodeRunner nodeLauncher;
 
     /**

@@ -7,6 +7,13 @@ import java.util.Arrays;
  */
 public final class Utils {
     /**
+     * Empty Constructor of the Utils, to satisfy javadoc's infinite thirst for docs.
+     */
+    public Utils(){
+        super();
+    }
+
+    /**
      * Get the luminance of a color
      * @param c the color
      * @return the luminance as a double

@@ -5,19 +5,42 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * @author Matvei Pavlov
- *
  * Run a node by creating its physical version, and processing the sending of messages.
  * This is also the place where the routing algorithm is used
+ * @author Matvei Pavlov
  */
 public class NodeRunner {
+    /**
+     * The value of the node
+     */
     int value;
+    /**
+     * The total number of elements of the node
+     */
     int numberOfElements;
+    /**
+     * The list of neighbors of the node
+     */
     ArrayList<Integer> connectedTo;
+    /**
+     * The physical node doing the communications of this node on this process
+     */
     private PhysicalNode pn;
+    /**
+     * The directions in which to go to reach node i
+     */
     private int[] directions;
+    /**
+     * The graph given in input as a 2D array of ints
+     */
     int[][] graph;
+    /**
+     * The gui of the physical node
+     */
     PhysicalNodeGUI gui;
+    /**
+     * The SingleNode acting as a controller who called this class.
+     */
     SingleNode caller;
 
     /**

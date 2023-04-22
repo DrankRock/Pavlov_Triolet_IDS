@@ -2,14 +2,26 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * Supposed to act as a model, that launches the physical node, and the virtual node, and reacts
+ * Supposed to act as a Controller, that launches the physical node, and the virtual node, and reacts
  * to an action on the virtual node, and process this to the physical node and vice versa
  * @author Matvei Pavlov
  */
 public class SingleNode {
+    /**
+     * The value of the node
+     */
     private int currentWindow;
+    /**
+     * The total number of nodes
+     */
     private int totalWindows;
+    /**
+     * The wrapper/controller of the virtual node
+     */
     private Controller ctrl;
+    /**
+     * The wrapper/controller/model of the physical node
+     */
     private NodeRunner physicalNode;
 
     /**
