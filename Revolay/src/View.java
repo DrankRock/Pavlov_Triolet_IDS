@@ -21,6 +21,8 @@ public class View extends JFrame {
         setTitle("Node " + number);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
+        setAlwaysOnTop(true);
+
 
         numberPanel = new NumberPanel(number, backgroundColor);
         add(numberPanel, BorderLayout.CENTER);

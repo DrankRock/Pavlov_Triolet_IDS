@@ -1,4 +1,0 @@
-Questions: 
-a) Program runs
-b) If the server stops, the client doesn't stop and will continue trying, returning "echo: null"
-c) If the client stops, the server writes "I'm ending...", then ends (another client can't connect)
