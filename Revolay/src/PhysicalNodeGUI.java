@@ -2,6 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
+ * The physical node gui, being a Simple rectangular window with the number of the node
+ * and a button to chose which node to send a message. The message is a simple Ping.
+ *
  * @author Matvei Pavlov
  */
 public class PhysicalNodeGUI extends JFrame {
@@ -11,6 +14,13 @@ public class PhysicalNodeGUI extends JFrame {
     private int numberOfElements;
     private NodeRunner nodeLauncher;
 
+    /**
+     * Constructor of the physical node
+     * @param c the Color of the background (always Gray)
+     * @param value the value of the node
+     * @param numberOfElements the total number of nodes
+     * @param nodeLauncher the caller of this class, a NodeRunner class
+     */
     public PhysicalNodeGUI(Color c, int value, int numberOfElements, NodeRunner nodeLauncher){
         this.backgroundColor = c;
         this.value = value;
@@ -97,8 +107,10 @@ public class PhysicalNodeGUI extends JFrame {
     }
 
     /**
-     * Make the window flash a Green color, to indicate that it received a message
+     * Make the window flash a Green color, to indicate that it received a message.
+     * This class is currently not used because the flickering is very unreliable.
      */
+    @SuppressWarnings("unused")
     public void flicker() {
         Thread anon = new Thread(() -> {
             this.numberPanel.setBackground(Color.green);
