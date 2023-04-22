@@ -47,16 +47,22 @@ public class Controller {
     }
 
     /**
-     * Send a message to the right node in the virtual representation
+     * Send a message to the right node as represented, but calls the Model
      */
     public void sendRight(){
         mdl.sendMessage(next);
     }
 
+    /**
+     * Send a message to the left node as represented, but calls the Model
+     */
     public void sendLeft(){
         mdl.sendMessage(prec);
     }
 
+    /**
+     * Make the current window flicker in green color
+     */
     public void ping(){
         gui.flicker();
     }
