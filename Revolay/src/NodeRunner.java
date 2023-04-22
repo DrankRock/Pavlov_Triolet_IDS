@@ -16,7 +16,7 @@ public class NodeRunner {
     private PhysicalNode pn;
     private int[] directions;
     int[][] graph;
-    NodeGUI gui;
+    PhysicalNodeGUI gui;
     SingleNode caller;
 
     /**
@@ -105,7 +105,7 @@ public class NodeRunner {
                 pn.addDirection(i, this.directions[i]);
             }
         }
-        this.gui = new NodeGUI(Color.GRAY, value, numberOfElements, this);
+        this.gui = new PhysicalNodeGUI(Color.GRAY, value, numberOfElements, this);
     }
 
     public void received(Message msg){

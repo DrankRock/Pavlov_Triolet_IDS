@@ -28,18 +28,6 @@ public class PhysicalNode {
     private HashMap<Integer,Integer> directionOf;
     private NodeRunner caller;
 
-    public PhysicalNode(int value, ArrayList<Integer> connectedTo) {
-        this.value = value;
-        //System.out.println("Created physicalNode "+this.value+" connected to "+ Arrays.toString(connectedTo.toArray()));
-        this.connectedTo = connectedTo;
-        try {
-            this.setupFactory();
-        } catch (IOException | TimeoutException e) {
-            throw new RuntimeException(e);
-        }
-        this.directionOf = new HashMap<>();
-    }
-
     public PhysicalNode(int value, ArrayList<Integer> connectedTo, int numberOfElements, NodeRunner caller) {
         this.value = value;
         this.numberOfElements = numberOfElements;
@@ -52,31 +40,6 @@ public class PhysicalNode {
         }
         this.directionOf = new HashMap<>();
         this.caller = caller;
-    }
-
-    /**
-     * Create a new physical node with only its
-     * @param value
-     */
-    public PhysicalNode(int value) {
-        this.value = value;
-        this.connectedTo = new ArrayList<>();
-        //System.out.println("Created physicalNode "+this.value+" connected to "+ Arrays.toString(connectedTo.toArray()));
-        try {
-            this.setupFactory();
-        } catch (IOException | TimeoutException e) {
-            throw new RuntimeException(e);
-        }
-        this.directionOf = new HashMap<>();
-    }
-
-
-    /**
-     * Add a node connected to this one
-     * @param node the id of the neighbor
-     */
-    public void addConnection(int node){
-        connectedTo.add(node);
     }
 
     /**

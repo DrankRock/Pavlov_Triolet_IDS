@@ -17,11 +17,6 @@ public final class Utils {
         return getLuminance(c) > 127.5;
     }
 
-    static public boolean isDark(Color c){
-        //  (0.2126*R + 0.7152*G + 0.0722*B)
-        return getLuminance(c) <= 127.5;
-    }
-
     /**
      * Bellman Ford Algoritm's implementation to find the shortest path to all the nodes of a graphe
      * @param from the starting node

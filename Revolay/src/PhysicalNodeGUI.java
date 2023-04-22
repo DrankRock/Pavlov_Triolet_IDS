@@ -1,19 +1,17 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * @author Matvei Pavlov
  */
-public class NodeGUI extends JFrame {
+public class PhysicalNodeGUI extends JFrame {
     private NumberPanel numberPanel;
     private Color backgroundColor;
     private int value;
     private int numberOfElements;
     private NodeRunner nodeLauncher;
 
-    public NodeGUI(Color c, int value, int numberOfElements, NodeRunner nodeLauncher){
+    public PhysicalNodeGUI(Color c, int value, int numberOfElements, NodeRunner nodeLauncher){
         this.backgroundColor = c;
         this.value = value;
         this.numberOfElements = numberOfElements;
@@ -38,13 +36,8 @@ public class NodeGUI extends JFrame {
         JPanel bottomPanel = new JPanel(new GridLayout(0, 2));
         bottomPanel.add(destComboBox);
         JButton send = new JButton("Send");
-        send.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //System.out.println("Bug");
-                //ping(Integer.parseInt(Objects.requireNonNull(destComboBox.getSelectedItem()).toString()));
-                ping(Integer.parseInt(destComboBox.getSelectedItem().toString()));
-            }
+        send.addActionListener(e -> {
+            ping(Integer.parseInt(destComboBox.getSelectedItem().toString()));
         });
         bottomPanel.add(send);
 
@@ -103,6 +96,9 @@ public class NodeGUI extends JFrame {
         }
     }
 
+    /**
+     * Make the window flash a Green color, to indicate that it received a message
+     */
     public void flicker() {
         Thread anon = new Thread(() -> {
             this.numberPanel.setBackground(Color.green);
@@ -116,6 +112,11 @@ public class NodeGUI extends JFrame {
         anon.start();
     }
 
+    /**
+     * Called on click of a button, try to ping the virtual destination, sending this action
+     * to the Physical node for it to execute this
+     * @param dest the value of the destination
+     */
     public void ping(int dest){
         nodeLauncher.ping(dest);
     }

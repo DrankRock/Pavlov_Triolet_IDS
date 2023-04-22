@@ -4,7 +4,7 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.geom.Ellipse2D;
 
-public class View extends JFrame {
+public class VirtualNodeGUI extends JFrame {
     private Color backgroundColor;
 
     private JButton leftButton;
@@ -14,7 +14,7 @@ public class View extends JFrame {
     private final int buttonWidth = 30;
     private JPanel numberPanel;
 
-    public View(int number, Color backgroundColor, int totalWindows, Controller thisController) {
+    public VirtualNodeGUI(int number, Color backgroundColor, int totalWindows, Controller thisController) {
         this.number = number;
         this.backgroundColor = backgroundColor;
 

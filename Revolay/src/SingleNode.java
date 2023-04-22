@@ -11,6 +11,7 @@ public class SingleNode {
     private int totalWindows;
     private Controller ctrl;
     private NodeRunner physicalNode;
+
     public SingleNode(String[] args){
         physicalNode = new NodeRunner(args, this); // physical node launching
         physicalNode.init();

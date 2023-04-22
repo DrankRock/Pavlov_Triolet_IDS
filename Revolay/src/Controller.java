@@ -2,12 +2,14 @@ import java.awt.*;
 
 /**
  * Controller class to make the communication between a GUI and a Client (consumer or producer)
+ * Due to major modifications in the way everything works together, it is a secondary controller,
+ * the main one being SingleNode
  *
  * @author Matvei Pavlov
  * @author Hugo Triolet
  */
 public class Controller {
-    private View gui;
+    private VirtualNodeGUI gui;
     private SingleNode mdl;
     private int number;
     private int next;
@@ -21,7 +23,7 @@ public class Controller {
     }
 
     public void init(SingleNode model){
-        gui = new View(
+        gui = new VirtualNodeGUI(
                 number, new Color(
                         (int) (Math.random() * 255),
                         (int) (Math.random() * 255),
