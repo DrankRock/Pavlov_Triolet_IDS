@@ -12,8 +12,8 @@ import java.util.concurrent.TimeoutException;
 
 /**
  * @author Matvei Pavlov
- * Physical Network Node, connecting to its peers with RabbitMQ, sending messages to its neighbors.
- * This has the objective of being a representation of a network entered as a Graph.
+ * Physical Node, connecting to its peers with RabbitMQ, sending messages to its neighbors.
+ * This has the objective of being a representation of a physical node on a single process.
  */
 public class PhysicalNode {
     private int value;
@@ -25,6 +25,13 @@ public class PhysicalNode {
     private HashMap<Integer,Integer> directionOf;
     private NodeRunner caller;
 
+    /**
+     * Constructor of the PhysicalNode
+     * @param value the value of the node
+     * @param connectedTo the neighbors of the node, as an ArrayList of Integers
+     * @param numberOfElements the total number of nodes
+     * @param caller the class who called this PhysicalNode (a NodeRunner)
+     */
     public PhysicalNode(int value, ArrayList<Integer> connectedTo, int numberOfElements, NodeRunner caller) {
         this.value = value;
         this.numberOfElements = numberOfElements;
@@ -52,10 +59,6 @@ public class PhysicalNode {
         factory.setVirtualHost("cherry_broker");
         connection = factory.newConnection();
         channel = connection.createChannel();
-/*        for (int i : connectedTo){
-            String channelName = "CNL"+i;
-            channel.queueDeclare(channelName, false, false, false, null);
-        } */
         channel.queueDeclare("To_"+value, false, false, false, null);
         setupRec("To_"+value);
     }
@@ -122,5 +125,4 @@ public class PhysicalNode {
     public void addDirection(int to, int next){
         directionOf.put(to, next);
     }
-
 }
