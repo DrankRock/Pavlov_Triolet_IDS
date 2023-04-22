@@ -7,7 +7,8 @@ import java.util.ArrayList;
 /**
  * @author Matvei Pavlov
  *
- * Run a node by creating its physical version, and processing the sending of messages
+ * Run a node by creating its physical version, and processing the sending of messages.
+ * This is also the place where the routing algorithm is used
  */
 public class NodeRunner {
     int value;
@@ -95,7 +96,9 @@ public class NodeRunner {
     }
 
     /**
-     * Initialize the NodeRunner by creating its physical node,adding its directions, and launching the gui.
+     * Initialize the NodeRunner by creating setting the SingleNode who called this, its physical node,adding its
+     * directions, and launching the gui.
+     * @param caller the SingleNode who called this class
      */
     public void init(SingleNode caller){
         this.caller = caller;
@@ -108,6 +111,10 @@ public class NodeRunner {
         this.gui = new PhysicalNodeGUI(Color.GRAY, value, numberOfElements, this);
     }
 
+    /**
+     * Called when the physical node receives a message. Transmits it to the Controller
+     * @param msg the received message
+     */
     public void received(Message msg){
         this.caller.receivedMessage(msg);
     }
@@ -124,9 +131,18 @@ public class NodeRunner {
         }
     }
 
+    /**
+     * Getter of the node's value
+     * @return the node's value
+     */
     public int getValue(){
         return this.value;
     }
+
+    /**
+     * Get the total number of nodes
+     * @return the total number of nodes
+     */
     public int getTotalNodes(){
         return this.numberOfElements;
     }
