@@ -13,8 +13,7 @@ public class SingleNode {
     private NodeRunner physicalNode;
 
     public SingleNode(String[] args){
-        physicalNode = new NodeRunner(args, this); // physical node launching
-        physicalNode.init();
+        physicalNode = new NodeRunner(args); // physical node launching
         this.currentWindow = physicalNode.getValue();
         this.totalWindows = physicalNode.getTotalNodes();
         ctrl = new Controller(currentWindow, totalWindows); // virtual node launching
@@ -22,6 +21,7 @@ public class SingleNode {
 
     public void init(){
         ctrl.init(this);
+        physicalNode.init(this);
     }
 
     public void receivedMessage(Message msg){

@@ -23,7 +23,7 @@ public class NodeRunner {
      * Constructor from command line arguments. Initialize the node's directions from the given graph file
      * @param args command line arguments
      */
-    public NodeRunner(String[] args, SingleNode caller){
+    public NodeRunner(String[] args){
         if (args.length != 3){
             System.out.println("Usage : java Main.java <graphe file> <connections of node> <node's number>");
             System.exit(1);
@@ -38,7 +38,6 @@ public class NodeRunner {
         int[] preds = Utils.Bellman_Ford(value, this.graph);
         this.directions = Utils.predToDirection(preds, value);
         this.numberOfElements = preds.length;
-        this.caller = caller;
     }
 
     /**
@@ -98,7 +97,8 @@ public class NodeRunner {
     /**
      * Initialize the NodeRunner by creating its physical node,adding its directions, and launching the gui.
      */
-    public void init(){
+    public void init(SingleNode caller){
+        this.caller = caller;
         pn = new PhysicalNode(value, connectedTo, numberOfElements, this);
         for (int i=0; i<directions.length; i++) {
             if (i != value){
