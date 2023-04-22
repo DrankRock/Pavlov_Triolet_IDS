@@ -4,6 +4,13 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.geom.Ellipse2D;
 
+/**
+ * Graphical User Interface of a Virtual node. The nodes are around an invisible circle to form a ring.
+ * The windows are perfect circles. Buttons on the right and left are used to send pings to respectively the next and
+ * precedent ball.
+ * Note that precedent and next is about the number on the ball, not the litteral right or left.
+ * @author Matvei Pavlov
+ */
 public class VirtualNodeGUI extends JFrame {
     private Color backgroundColor;
 
@@ -14,6 +21,14 @@ public class VirtualNodeGUI extends JFrame {
     private final int buttonWidth = 30;
     private JPanel numberPanel;
 
+    /**
+     * Constructor of the GUI of a virtual node. The current node's position depends of its value and of the
+     * total number of windows that will be opened. The guis are opened around an imaginary circle.
+     * @param number the value of the node
+     * @param backgroundColor the background color of the node, randomly generated
+     * @param totalWindows the total number of nodes
+     * @param thisController the controller who called this GUI
+     */
     public VirtualNodeGUI(int number, Color backgroundColor, int totalWindows, Controller thisController) {
         this.number = number;
         this.backgroundColor = backgroundColor;
@@ -48,7 +63,8 @@ public class VirtualNodeGUI extends JFrame {
         setLocationRelativeTo(null);
 
 
-        // This whole class was copied-paste from oracle doc : https://docs.oracle.com/javase/tutorial/uiswing/misc/trans_shaped_windows.html
+        // This whole class was initially copied-paste from oracle doc :
+        // https://docs.oracle.com/javase/tutorial/uiswing/misc/trans_shaped_windows.html
         // It is best practice to set the window's shape in
         // the componentResized method.  Then, if the window
         // changes size, the shape will be correctly recalculated.
@@ -81,12 +97,18 @@ public class VirtualNodeGUI extends JFrame {
 
 
     /**
-     * NumberPanel Class, containing a number that fits in all the available size
+     * NumberPanel Class, containing a number that fits in all the available size.
+     * This class was realized with the help of chatGPT, then modified during the evolution of the project.
      */
     private class NumberPanel extends JPanel {
         private int number;
         private Color backgroundColor;
 
+        /**
+         * Constructor of the NumberPanel
+         * @param number the node's number
+         * @param backgroundColor the background color of the panel
+         */
         public NumberPanel(int number, Color backgroundColor) {
             this.number = number;
             this.backgroundColor = backgroundColor;
@@ -94,6 +116,11 @@ public class VirtualNodeGUI extends JFrame {
             setBackground(backgroundColor);
         }
 
+        /**
+         * Specific paintComponenet to have a number fit inside the circle.
+         * Note that this doesn't always work, because of it being a circle.
+         * @param g the <code>Graphics</code> object to protect
+         */
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
@@ -114,6 +141,9 @@ public class VirtualNodeGUI extends JFrame {
         }
     }
 
+    /**
+     * Make the background color change to green for 400ms on reception of a message.
+     */
     public void flicker() {
         Thread anon = new Thread(() -> {
             this.numberPanel.setBackground(Color.green);
