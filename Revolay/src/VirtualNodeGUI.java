@@ -17,6 +17,14 @@ public class VirtualNodeGUI extends JFrame {
      */
     private Color backgroundColor;
     /**
+     * The negative color of the background color to see the flicker whatever the color
+     */
+    private Color flickerColor;
+    /**
+     * Color of the text when flickering, if the negative color is dark
+     */
+    private Color flickerTextcolor;
+    /**
      * The button to send a ping to the previous node
      */
     private JButton leftButton;
@@ -53,6 +61,12 @@ public class VirtualNodeGUI extends JFrame {
     public VirtualNodeGUI(int number, Color backgroundColor, int totalWindows, Controller thisController) {
         this.number = number;
         this.backgroundColor = backgroundColor;
+        this.flickerColor = Utils.getNegativeColor(backgroundColor);
+        if (Utils.isBright(flickerColor)){
+            this.flickerTextcolor = Color.WHITE;
+        } else {
+            this.flickerTextcolor = Color.BLACK;
+        }
         this.thisController = thisController;
 
         setTitle("Node " + number);
@@ -125,6 +139,7 @@ public class VirtualNodeGUI extends JFrame {
     private class NumberPanel extends JPanel {
         private int number;
         private Color backgroundColor;
+        private Color textColor;
 
         /**
          * Constructor of the NumberPanel
@@ -134,6 +149,11 @@ public class VirtualNodeGUI extends JFrame {
         public NumberPanel(int number, Color backgroundColor) {
             this.number = number;
             this.backgroundColor = backgroundColor;
+            if (Utils.isBright(backgroundColor)) {
+                textColor = Color.BLACK;
+            } else {
+                textColor = Color.WHITE;
+            }
             setOpaque(true);
             setBackground(backgroundColor);
         }
@@ -150,11 +170,7 @@ public class VirtualNodeGUI extends JFrame {
             Font numberFont = new Font("Arial", Font.BOLD, getHeight() - 20);
             g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             g2d.setFont(numberFont);
-            if (Utils.isBright(backgroundColor)) {
-                g2d.setColor(Color.BLACK);
-            } else {
-                g2d.setColor(new Color(255, 250, 250));
-            }
+            g2d.setColor(textColor);
             String numberString = String.valueOf(number);
             FontMetrics fontMetrics = g2d.getFontMetrics();
             int stringWidth = fontMetrics.stringWidth(numberString);
@@ -164,11 +180,11 @@ public class VirtualNodeGUI extends JFrame {
     }
 
     /**
-     * Make the background color change to green for 400ms on reception of a message.
+     * Make the background color change to the negative of the background for 400ms on reception of a message.
      */
     public void flicker() {
         Thread anon = new Thread(() -> {
-            this.numberPanel.setBackground(Color.green);
+            this.numberPanel.setBackground(this.flickerColor);
             try {
                 Thread.sleep(400);
             } catch (InterruptedException e) {

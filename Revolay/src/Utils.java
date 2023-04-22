@@ -25,6 +25,22 @@ public final class Utils {
     }
 
     /**
+     * Get the negative color associated with another color
+     * @param color the original color
+     * @return its negative
+     */
+    static public Color getNegativeColor(Color color) {
+        int red = color.getRed();
+        int green = color.getGreen();
+        int blue = color.getBlue();
+        int nRed = 255 - red;
+        int nGreen = 255 - green;
+        int nBlue = 255 - blue;
+
+        return new Color(nRed, nGreen, nBlue);
+    }
+
+    /**
      * Determines objectively if a color is bright rather than dark
      * @param c the color
      * @return true if the color is bright
